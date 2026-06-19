@@ -8,7 +8,7 @@ description: Extract reusable content, insights, and knowledge-base entries from
 Turn a raw transcript into compounding assets.
 
 ## When to run
-Automatically after any new transcript is saved (content/raw/ or clients/<client>/meetings/), or on request.
+Automatically after any new transcript is saved (content/raw/ or clients/{client}/meetings/), or on request.
 
 ## Steps
 1. Read the transcript.

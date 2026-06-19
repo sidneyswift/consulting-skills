@@ -15,5 +15,5 @@ After discovery analysis on a qualified deal.
    objectives/success metrics → approach → three options (Advisory / Comprehensive [recommended] /
    Premium w/ expert access, 5-10x spread) → joint accountability → investment & payment terms → next steps.
 3. Pull payment structures from `library/pricing/payment-structures.md`.
-4. Save to the deal/client's `02-proposals/` as `<deal>-proposal-YYYY-MM-DD.md`.
+4. Save to the deal/client's `02-proposals/` as `{deal}-proposal-YYYY-MM-DD.md`.
 5. Remind: deliver within 48h, attach a Loom, lock the review call.

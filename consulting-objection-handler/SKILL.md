@@ -1,0 +1,16 @@
+---
+name: consulting-objection-handler
+description: Turn a raw objection into a tailored response. Use when a prospect pushes back — "they said it's too expensive", "they want to think about it", "how do I respond to this objection".
+---
+
+# Consulting Objection Handler
+
+## Steps
+1. Classify the objection against the core set (`library/scripts/objection-responses.md`):
+   think-about-it · over-budget · exploring-options · build-internally · internal-buy-in · bad-experiences.
+2. Personalize the matching script with the deal's stakes and ROI numbers.
+3. Use "What would need to be true for you to move forward confidently?" to surface the real blocker.
+4. If buy-in is the blocker, produce stakeholder materials: a one-page executive summary + ROI one-pager + a shareable Loom outline.
+5. Check walk-away criteria (`library/scripts/negotiation-and-walkaway.md`) — if it's a hard no, draft a graceful exit.
+
+Output: a tailored response + any stakeholder assets. Source: Ch. 9, 15.

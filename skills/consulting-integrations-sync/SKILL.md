@@ -9,7 +9,7 @@ Keep `integrations/` (Granola, Attio, LinkedIn, Gmail) and the curated repo from
 Run end-to-end, then report. API keys are in repo-root `.env.local`.
 
 ## Steps
-1. **Attio (query live — system of record).** Per `operating/crm-sync.md`, query deals via REST
+1. **Attio (query live — system of record).** Per `integrations/attio/crm-sync.md`, query deals via REST
    (`POST /v2/objects/deals/records/query`). For each deal, compare its **stage** to its
    filesystem location. On mismatch: move the folder (`pipeline/**` ↔ `clients/**`), fix the deal
    `AGENTS.md` status line, and regenerate `pipeline/_board.md`. Attio wins on stage; repo wins on artifacts.

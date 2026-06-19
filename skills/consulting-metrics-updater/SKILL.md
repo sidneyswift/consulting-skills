@@ -7,7 +7,7 @@ description: Refresh the practice metrics and dashboard. Use monthly, after a de
 
 ## Steps
 1. Compute KPIs from the pipeline + clients: win rate, avg deal size, sales-cycle length, MRR, conversations/week, testimonials captured.
-2. Refresh `operating/dashboard.html` (funnel counts, client table, KPI tiles).
+2. Refresh `business/metrics/dashboard.html` (funnel counts, client table, KPI tiles).
 3. Append a dated snapshot to `business/metrics/`.
 4. Flag anomalies (e.g. acceptance >80% = underpriced; cycle lengthening).
 

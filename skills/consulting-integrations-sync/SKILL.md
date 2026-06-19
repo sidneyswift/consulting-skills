@@ -20,9 +20,13 @@ Run end-to-end, then report. API keys are in repo-root `.env.local`.
    chain into `consulting-linkedin-audience`. Update `integrations/linkedin/_work/LAST_SYNCED`.
 4. **Gmail (if auth configured).** Pull deal/client threads; flag any **awaiting my reply**. If auth
    isn't set up yet, skip and note it.
-5. **Mine fresh material.** New won deals → `consulting-case-study-builder`; recurring answers →
+5. **Research wiki (read-only content source).** Mined by `consulting-research-miner` (delta-guarded
+   via `integrations/research/_work/LAST_MINED`) and pulled at draft time by `consulting-content-drafter`
+   — see `integrations/research/AGENTS.md`. The Friday harvest lives in `consulting-friday-review`;
+   trigger the miner here too if the wiki's `log.md` advanced since `LAST_MINED`.
+6. **Mine fresh material.** New won deals → `consulting-case-study-builder`; recurring answers →
    `knowledge/faqs/`; reusable insights → `knowledge/insights/` + `content/ideas/`.
-6. **Stamp + report.** Update each integration's `LAST_SYNCED`, the crm-sync "Last full reconcile"
+7. **Stamp + report.** Update each integration's `LAST_SYNCED`, the crm-sync "Last full reconcile"
    note, and write a short report: **what changed · what drifted · what's stale · what needs me**.
 
 Confirm before inventing client facts. Do the routine filing/reconciling without asking.

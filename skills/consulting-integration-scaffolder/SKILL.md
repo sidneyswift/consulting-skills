@@ -9,10 +9,12 @@ The repeatable recipe behind `integrations/linkedin/` and `integrations/gmail/`.
 key, build the standard structure so every integration looks and works the same.
 
 ## First: classify the ownership type (decides what lives in the repo)
-Per `integrations/AGENTS.md`: **Granola you mirror, Attio you query, LinkedIn/Gmail you log.**
+Per `integrations/AGENTS.md`: **Granola you mirror, Attio you query, LinkedIn/Gmail you log, Research you mine.**
 - **Read-only source** (can't organize at source) → mirror + index in the repo.
 - **System of record** (full API) → store only a thin regenerated snapshot; query live.
 - **Channel** (read signal + write actions) → log distilled signal + published artifacts.
+- **Read-only content source** (e.g. a local knowledge repo) → mine the delta into `content/` only;
+  cite, don't copy. No mirror, and no scripts if it's local files (see `integrations/research/`).
 
 ## Steps
 1. **Put the key in `.env.local`** (repo root, gitignored) — never in the integration folder.

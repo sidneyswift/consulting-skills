@@ -12,4 +12,4 @@ description: Bundle the skills/ directory into an installable plugin. Use on "pa
 4. Guide installing the plugin into the Claude workspace.
 5. Confirm installed skills now trigger by description (no need to point at files).
 
-Full lifecycle: `skills/_packaging/README.md`.
+Full lifecycle: `_packaging/README.md`.

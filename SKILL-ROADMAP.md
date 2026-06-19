@@ -3,7 +3,7 @@
 Every repeatable workflow in the playbook, mapped to a skill we can author with `/skill-creator`.
 Rule of the practice: **anything done more than once becomes a skill.** Each skill lives in
 `skills/<name>/SKILL.md`, then gets packaged into a plugin and installed so it triggers
-non-deterministically (see `skills/_packaging/README.md`).
+non-deterministically (see `_packaging/README.md`).
 
 Status legend: ✅ built (all 26 now authored). Priority: **P0** = highest leverage. Next step: package + install so they auto-trigger (consulting-skill-packager).
 
@@ -160,7 +160,7 @@ The connective tissue between delivery, renewals, and proof.
 ### 25. consulting-skill-packager ✅ (P1)
 - **Trigger:** "package the skills", new skill authored.
 - **Does:** bundle `skills/` into a plugin (plugin.json + skills), produce the `.plugin`, and guide the GitHub publish + install so skills trigger non-deterministically.
-- **Source:** `skills/_packaging/README.md` + the `create-cowork-plugin` skill.
+- **Source:** `_packaging/README.md` + the `create-cowork-plugin` skill.
 
 ### 26. consulting-system-auditor ✅ (P2)
 - **Trigger:** "audit the system", periodically.

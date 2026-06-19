@@ -9,7 +9,7 @@ The repeatable recipe behind `integrations/linkedin/` and `integrations/gmail/`.
 key, build the standard structure so every integration looks and works the same.
 
 ## First: classify the ownership type (decides what lives in the repo)
-Per `integrations/README.md`: **Granola you mirror, Attio you query, LinkedIn/Gmail you log.**
+Per `integrations/AGENTS.md`: **Granola you mirror, Attio you query, LinkedIn/Gmail you log.**
 - **Read-only source** (can't organize at source) → mirror + index in the repo.
 - **System of record** (full API) → store only a thin regenerated snapshot; query live.
 - **Channel** (read signal + write actions) → log distilled signal + published artifacts.
@@ -25,8 +25,9 @@ Per `integrations/README.md`: **Granola you mirror, Attio you query, LinkedIn/Gm
 4. **Write the scripts:** a `pull_*`/read script and (if it's a channel) a `publish_*`/write script.
    Writes must **confirm before sending** and default to draft/dry-run. Add a `LAST_SYNCED` marker.
 5. **Verify live** with a free/read-only call (token check, list accounts) before claiming it works.
-6. **Write `integrations/<tool>/README.md`** — accounts/IDs, in-vs-out-of-repo rules, scripts table,
-   examples, and activation steps. Add a row to `integrations/README.md`.
+6. **Write `integrations/<tool>/AGENTS.md`** (agent-native, not a README) — accounts/IDs,
+   in-vs-out-of-repo rules, scripts table, examples, and activation steps. Add a row to the folder
+   table in `integrations/AGENTS.md`.
 7. **Author companion skills** if there's a recurring task (a publisher, an audience/triage skill).
 8. **Gitignore any credential cache** (tokens) and commit. `__pycache__/` is already ignored.
 

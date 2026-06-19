@@ -1,18 +1,26 @@
-# Packaging skills into an installable plugin
+# Packaging: this repo IS an installable plugin
 
-These skills live in the workspace as plain folders so they're easy to author and version.
-To make them trigger **non-deterministically** inside the Claude workspace, they must be
-packaged as a plugin and installed.
+This repo is a self-contained plugin **and** its own single-plugin marketplace, so it installs
+directly from its GitHub URL — there's no build step and no `.plugin` artifact to produce.
 
-## Lifecycle
-1. **Author** a skill here: `skills/<skill-name>/SKILL.md` (frontmatter `name` + `description`, then steps).
-   Trigger to create one: anything you've done 2+ times. Use `/skill-creator` (or the
-   `create-cowork-plugin` skill) to scaffold it.
-2. **Bundle** the `skills/` folder into a plugin (a `plugin.json` + the skills).
-   Use the `create-cowork-plugin` skill to produce a `.plugin` file.
-3. **Publish** to GitHub as a plugin/marketplace repo (so it's versioned and shareable).
-4. **Install** the plugin into the Claude workspace from the marketplace.
-5. Once installed, the skill auto-triggers by its `description` — no need to point at the file.
+## How it's wired
+- `skills/<name>/SKILL.md` — one folder per skill (frontmatter `name` + `description`, then steps).
+- `.cursor-plugin/marketplace.json` + `.cursor-plugin/plugin.json` — make it installable in **Cursor**.
+- `.claude-plugin/marketplace.json` + `.claude-plugin/plugin.json` — make it installable in **Claude Code**.
+- Both manifests point the plugin's skills at the `skills/` directory.
+
+## Add or change a skill
+1. Create/edit `skills/<name>/SKILL.md` (rule of the practice: anything done 2+ times becomes a skill).
+   Use `/skill-creator` to scaffold the frontmatter + steps.
+2. (Optional) bump `version` in the `plugin.json` + `marketplace.json` files.
+3. Commit and push. That's it — the skill is now part of the plugin.
+
+## Install it
+- **Cursor:** add the repo URL (`https://github.com/sidneyswift/consulting-skills`) as a plugin
+  source (plugins panel, or Team/Enterprise → Settings → Plugins → Import from Repo), then install
+  `consulting-skills`.
+- **Claude Code:** add the same repo as a marketplace, then install the `consulting-skills` plugin.
+- Once installed, each skill auto-triggers by its `description` — no need to point at the file.
 
 ## Naming
-Prefix practice skills with `consulting-` so they group together in the marketplace.
+Prefix practice skills with `consulting-` so they group together.

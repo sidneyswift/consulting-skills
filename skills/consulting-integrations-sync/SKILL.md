@@ -1,6 +1,6 @@
 ---
 name: consulting-integrations-sync
-description: The anti-staleness engine for external integrations. Use on the Friday cadence, on "sync the integrations", "is the CRM in sync", "refresh granola/attio/linkedin", or whenever the repo might have drifted from Attio/Granola/LinkedIn. Reconciles live sources against the repo and reports what changed and what's stale.
+description: The anti-staleness engine for external integrations. Use on the Friday cadence, on "sync the integrations", "is the CRM in sync", "refresh granola/attio/linkedin/gmail/slack", or whenever the repo might have drifted from Attio/Granola/LinkedIn/Gmail/Slack. Reconciles live sources against the repo and reports what changed and what's stale.
 ---
 
 # Consulting Integrations Sync
@@ -20,13 +20,22 @@ Run end-to-end, then report. API keys are in repo-root `.env.local`.
    chain into `consulting-linkedin-audience`. Update `integrations/linkedin/_work/LAST_SYNCED`.
 4. **Gmail (if auth configured).** Pull deal/client threads; flag any **awaiting my reply**. If auth
    isn't set up yet, skip and note it.
-5. **Research wiki (read-only content source).** Mined by `consulting-research-miner` (delta-guarded
+5. **Slack (if auth configured — log + channel, like Gmail).** Pull the **delta** from deal-tied
+   conversations only (never the whole workspace). Run `integrations/slack/_work/list_access.py` to
+   confirm read access, then for each row of the **Deal channel routing** table in
+   `integrations/slack/AGENTS.md` run `integrations/slack/_work/pull_conversation.py --channel <id>
+   --token user --days N --out <dest>/<YYYY-MM-DD>-<channel>.md` with a **small bounded `--days`** off
+   `integrations/slack/_work/LAST_SYNCED` (user-token pulls are rate-limited/slow — **never an unbounded
+   backfill**). File each keeper next to its client, mine the internal product DM into `knowledge/product/`,
+   and flag threads **awaiting my reply**. Stamp `integrations/slack/_work/LAST_SYNCED`. No `SLACK_*`
+   keys set → skip and note it.
+6. **Research wiki (read-only content source).** Mined by `consulting-research-miner` (delta-guarded
    via `integrations/research/_work/LAST_MINED`) and pulled at draft time by `consulting-content-drafter`
    — see `integrations/research/AGENTS.md`. The Friday harvest lives in `consulting-friday-review`;
    trigger the miner here too if the wiki's `log.md` advanced since `LAST_MINED`.
-6. **Mine fresh material.** New won deals → `consulting-case-study-builder`; recurring answers →
+7. **Mine fresh material.** New won deals → `consulting-case-study-builder`; recurring answers →
    `knowledge/faqs/`; reusable insights → `knowledge/insights/` + `content/ideas/`.
-7. **Stamp + report.** Update each integration's `LAST_SYNCED`, the crm-sync "Last full reconcile"
+8. **Stamp + report.** Update each integration's `LAST_SYNCED`, the crm-sync "Last full reconcile"
    note, and write a short report: **what changed · what drifted · what's stale · what needs me**.
 
 Confirm before inventing client facts. Do the routine filing/reconciling without asking.

@@ -1,0 +1,27 @@
+---
+name: consulting-prospect-resurrection
+description: Revive cold/dormant prospects from historical meeting data. Use on "who's gone cold", "resurrect dead deals", "mine my old prospects", quarterly pipeline reviews, or when pipeline is thin. Turns past conversations into ranked, grounded re-engagement.
+---
+
+# Consulting Prospect Resurrection
+
+The cheapest pipeline is warm relationships that already know you. Mine the Granola archive for
+dormant prospects and turn them into ranked, personalized re-engagement.
+
+## Steps
+1. **Find the cold set.** Scan `integrations/granola/Recoup/prospects/` (and `_intro-calls/`) for
+   each prospect's **last meeting date**. Flag anything dormant (e.g. >90 days). Sort by recency.
+2. **Cross-reference Attio (live).** Skip anyone already an active deal/client. Note who's a
+   `product-user` vs a real lapsed lead.
+3. **Ground each one.** Read the prospect's latest Granola note(s) and pull: the buyer/champion,
+   their **stated pain in their words**, what was discussed, and the likely reason it stalled.
+   (Remember: Granola bodies are AI summaries — confirm specifics, don't fabricate.)
+4. **Rank** by fit to the ICP (`positioning/`) × pain intensity × deal ceiling. Big logos and
+   well-articulated pain rise to the top.
+5. **Draft re-engagement** per prospect: a value-first opener that references *their* stakes (not a
+   pitch), plus a 3-touch cadence (use `consulting-followup-sequencer`). Mark all as drafts to review.
+6. **Write the report** to `pipeline/_cold-prospect-resurrection-YYYY-MM-DD.md` (ranked table + angles).
+7. **Enter the top picks** into the pipeline: create the Attio deal (stage Lead) and a
+   `pipeline/01-leads/<prospect>/` folder with a grounded dashboard + `followups.md`.
+
+Output: a prioritized resurrection report + live leads in Attio and the pipeline.

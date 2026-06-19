@@ -12,6 +12,10 @@ description: Generate the timed follow-up cadence for a deal, personalized to th
    - 24h value-add (attach a relevant resource/case study)
    - Proposal delivery (within 48h, suggest a Loom)
 3. If silent, generate the Day 5 / 10 / 15 sequence (max 3 touches) — each referencing *their* stakes, not your proposal.
-4. Offer to set reminders / a scheduled task for the cadence.
+4. **Stage in Gmail (optional).** Offer to drop each touch into Gmail as a draft via
+   `integrations/gmail/_work/create_draft.py --to <addr> --subject "..." --body-file <file>`
+   (creates a draft; only sends with `--send` + a typed confirmation). Save drafts next to the deal
+   (e.g. `pipeline/01-leads/<deal>/followups.md`).
+5. Offer to set reminders / a scheduled task for the cadence.
 
-Output: ready-to-send emails. Source: Ch. 14 (48-Hour Rule + follow-up sequence).
+Output: ready-to-send emails (optionally staged as Gmail drafts). Source: Ch. 14 (48-Hour Rule + follow-up sequence).

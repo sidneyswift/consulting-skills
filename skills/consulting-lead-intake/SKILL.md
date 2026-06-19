@@ -1,20 +1,25 @@
 ---
 name: consulting-lead-intake
-description: Triage a brand-new inbound lead. Use when a new prospect appears — a fresh inquiry email, a first-call transcript, "new lead", "qualify this prospect", "should I take this deal". Creates the pipeline folder, qualifies the buyer, and opens a CRM record.
+description: Triage a brand-new inbound lead. Use when a new prospect appears — a fresh inquiry email, a first-call transcript, "new lead", "qualify this prospect", "should I take this deal". Verifies the lead against primary sources, creates the pipeline folder, qualifies the buyer, and opens a CRM record.
 ---
 
 # Consulting Lead Intake
 
 ## Steps
-1. Create `pipeline/01-leads/{deal-name}/` with an `AGENTS.md` dashboard (source, contact, stage, next action).
+1. Create `pipeline/01-leads/{deal-name}/AGENTS.md` (dashboard: source, contact, stage, next action) — open it with a `## Reality (Sid's POV)` block (label it **DRAFT** if agent-reconstructed; see `consulting-account-reality`).
 2. Save any raw inquiry/transcript into that folder, dated.
-3. Run the qualification checklist (Ch. 10):
-   - Stakes — is there a clear, painful, quantifiable problem?
-   - Timeline — is there urgency?
+3. **Verify before you qualify — never trust a single mention.** A lead that surfaced from a summary, a passing mention, or one channel is **[UNVERIFIED]**. Traverse the primary sources for the *real* thread / contact / stakes before triaging:
+   - **Gmail:** `python integrations/gmail/_work/pull_threads.py --query "<name or @domain>"` → file the snapshot in the lead folder.
+   - **Granola:** the intro-call note — verify any figure against the **verbatim transcript** (`?include=transcript`), not the AI summary.
+   - **Attio:** query live (avoid duplicates; get the real stage).
+   Quote source + date for every fact; mark what you can't find **[MISSING]**; and **correct overstatements** (e.g. an AI summary's "proposal out" when the thread shows only an intro call). Build/activity ≠ commitment; a summary ≠ the transcript.
+4. Run the qualification checklist (Ch.10), grounded in what you verified:
+   - Stakes — clear, painful, quantifiable problem?
+   - Timeline — urgency?
    - ROI measurability — can success be measured?
-   - Decision-maker — is the budget authority engaged?
-4. Flag red flags (vague "nice to have", no authority, wants hourly) → recommend qualify or pass.
-5. Create/update the Attio CRM record (stage = Lead, source, stakes, next action).
-6. If qualified, recommend booking discovery and note it on the board.
+   - Decision-maker — is the budget authority engaged? (name the buyer vs. the POC)
+5. Flag red flags (vague "nice to have", no authority, wants hourly, **single thin source**) → recommend qualify or pass.
+6. **Attio — only once the entity + a real contact are confirmed.** Create/update the record (stage = Lead, source, stakes, next action). Don't open a CRM record off one unverified mention.
+7. If qualified, recommend the next move (book discovery, or hold for their committed follow-up) and note it on `pipeline/_board.md`.
 
-Output: a triaged lead folder + a clear qualify/pass recommendation. Don't invent stakes — pull from the source material.
+Output: a triaged lead folder + a clear qualify/pass recommendation. Don't invent stakes — pull from **verified** primary sources, and say **[MISSING]** when you can't.

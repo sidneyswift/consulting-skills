@@ -1,9 +1,11 @@
 ---
 name: consulting-followup-sequencer
-description: Generate the timed follow-up cadence for a deal, personalized to the client's stated stakes. Use after a call or proposal — "draft follow-ups", "they went quiet", "what do I send next".
+description: Generate the timed follow-up cadence for a deal, personalized to the client's stated stakes. Use after a call or proposal, on "draft follow-ups", "they went quiet", "what do I send next".
 ---
 
 # Consulting Follow-Up Sequencer
+
+> Voice: always run drafts through the `consulting-email-voice` skill (no em-dashes, short and direct, names verified against real context).
 
 ## Steps
 1. Pull the deal's specifics: the outcome discussed, the stakes in their words, the next-meeting date.
@@ -11,7 +13,7 @@ description: Generate the timed follow-up cadence for a deal, personalized to th
    - Same-day thank-you
    - 24h value-add (attach a relevant resource/case study)
    - Proposal delivery (within 48h, suggest a Loom)
-3. If silent, generate the Day 5 / 10 / 15 sequence (max 3 touches) — each referencing *their* stakes, not your proposal.
+3. If silent, generate the Day 5 / 10 / 15 sequence (max 3 touches), each referencing *their* stakes, not your proposal.
 4. **Stage in Gmail (optional).** Offer to drop each touch into Gmail as a draft via
    `integrations/gmail/_work/create_draft.py --to <addr> --subject "..." --body-file <file>`
    (creates a draft; only sends with `--send` + a typed confirmation). Save drafts next to the deal

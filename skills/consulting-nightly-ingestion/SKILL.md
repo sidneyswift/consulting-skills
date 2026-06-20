@@ -21,8 +21,8 @@ Autopilot means "no human in the loop," not "skip the rails." These come straigh
    delete-and-recreate). List drafts in the digest for the user to send.
 2. **Verify before you write money/dates/stage.** Every `$`, %, date, MRR/fee, or who-pays-whom claim
    that lands in a dashboard, board, dossier, or the CRM must be quoted from a **primary source** —
-   the **verbatim Granola transcript** (`?include=transcript`, *not* the AI summary body), the actual
-   email, the contract, or a **live Attio field**. If you cannot quote it, write **[UNVERIFIED]** and
+   the **captured verbatim transcript** (`…/meetings/transcripts/…`, *not* the AI summary), the
+   **captured email archive** (`…/emails/…`), the contract, or a **live Attio field**. If you cannot quote it, write **[UNVERIFIED]** and
    route it to the digest's "Needs you" — do **not** assert it. Money is highest-stakes.
 3. **Never auto-delete or bulk-sweep.** Add and update only. Never delete or batch-edit a mailbox or
    external record. Act only on an ID you created **this run**, never a pattern/search/list match.
@@ -36,10 +36,12 @@ Autopilot means "no human in the loop," not "skip the rails." These come straigh
    If a key is missing, skip that source and note it in the digest — never guess its data.
 
 1. **Pull (delegate to `consulting-integrations-sync`).** Run it for the live API sources only:
-   **Attio** (query live, reconcile stage ↔ folder), **Granola** (re-pull deltas since `_work`),
-   **Gmail** (pull deal/client threads, flag awaiting-my-reply), **LinkedIn** (refresh engagement),
-   and **Slack** (deal-tied channels per its Slack step — **full pull: every message AND every thread
-   reply**, `--days 0 --threads`; routing table in `integrations/slack/AGENTS.md`). It advances each source's
+   **Attio** (query live, reconcile stage ↔ folder), **Granola** (capture **verbatim transcripts** for new
+   in-scope notes via `list_new_notes.py` → `pull_transcript.py` — the transcript, never the AI summary),
+   **Gmail** (Attio-gated **full-thread archives** via `export_thread_bodies.py`, plus awaiting-reply
+   triage), **LinkedIn** (refresh engagement), and **Slack** (deal-tied channels per its Slack step —
+   **full pull: every message AND every thread reply**, `--days 0 --threads`; routing table in
+   `integrations/slack/AGENTS.md`). It advances each source's
    `LAST_SYNCED` — that watermark is what keeps this idempotent, so a re-run never re-ingests yesterday.
    **Skip the research wiki** here: it's a *local* sibling repo
    (`../research`) the cloud routine can't see, and it's content-only — leave it to the local Friday
@@ -72,7 +74,9 @@ Autopilot means "no human in the loop," not "skip the rails." These come straigh
 
 5. **Write the morning digest** → `business/ops/nightly-digests/<YYYY-MM-DD>.md` (create the folder if
    missing). Keep it skimmable for a 30-second morning read:
-   - **Ingested** — what came in (N meetings, N threads, N engagements), each one line with its home.
+   - **Ingested** — what came in (N meetings, N threads, N engagements), each one line **with a link to
+     its raw artifact** (transcript / email-archive / slack file). The digest is an *index into the raw*,
+     never a substitute — every claim below must trace to one of these captured primary sources.
    - **Changed** — dashboards/board/CRM updates made, stage moves, new content ideas/insights.
    - **Needs you** — the queue the rails parked: drafts awaiting send, `[UNVERIFIED]` figures to
      confirm, ambiguous stage moves, missing keys/sources. This is the section the user actually acts on.

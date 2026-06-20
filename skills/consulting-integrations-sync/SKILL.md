@@ -13,13 +13,29 @@ Run end-to-end, then report. API keys are in repo-root `.env.local`.
    (`POST /v2/objects/deals/records/query`). For each deal, compare its **stage** to its
    filesystem location. On mismatch: move the folder (`pipeline/**` ↔ `clients/**`), fix the deal
    `AGENTS.md` status line, and regenerate `pipeline/_board.md`. Attio wins on stage; repo wins on artifacts.
-2. **Granola (re-pull deltas — mirror).** If new meetings exist since `integrations/granola/_work` was
-   last built, re-run the pull pipeline (or note it's due). File new consulting meetings under the right
-   `clients/`/`pipeline/` folder and flag any **new prospect** for `consulting-lead-intake`.
+2. **Granola (capture VERBATIM transcripts — the primary source, not the summary).** List new notes:
+   `python integrations/granola/_work/list_new_notes.py` (id/title/created_at/attendees for notes newer
+   than `_work/LAST_SYNCED`). Classify each by job + attendee domain: **in scope** = Recoup consulting (a
+   won client or an open prospect/lead); **skip** SwiftResponse/Flex, personal, and internal standups
+   (note skips in the report, don't fetch them). For each in-scope note capture the transcript —
+   `python integrations/granola/_work/pull_transcript.py --note <id> --stage --out <dest>` — where `<dest>`
+   is `clients/<client>/meetings/transcripts/<YYYY-MM-DD>-<slug>.md` (won) or
+   `pipeline/<stage>/<deal>/meetings/transcripts/<YYYY-MM-DD>-<slug>.md` (open). The file holds the AI
+   summary (labelled *not evidence*) **and the verbatim transcript** — cite the transcript downstream,
+   never the summary. New prospect with no folder → `consulting-lead-intake` first. Stamp
+   `integrations/granola/_work/LAST_SYNCED` with today's ISO datetime.
 3. **LinkedIn (pull signal).** Refresh follower/engagement snapshots if stale; if new engagement exists,
    chain into `consulting-linkedin-audience`. Update `integrations/linkedin/_work/LAST_SYNCED`.
-4. **Gmail (if auth configured).** Pull deal/client threads; flag any **awaiting my reply**. If auth
-   isn't set up yet, skip and note it.
+4. **Gmail (capture FULL threads for real relationships — Attio-gated).** Scope = people who matter:
+   query Attio live for **Customers + Warm Leads + Target Accounts + open-pipeline contacts**, collect their
+   email domains/addresses (the 1,041 `relationship = product-user` are quarantined — exclude). For each
+   client/deal, archive the **full thread history** (every message, untruncated):
+   `python integrations/gmail/_work/export_thread_bodies.py --query "from:<domain> OR to:<domain>"
+   --title "<Name>" --out <clients|pipeline>/<entity>/emails/email-archive-<YYYY-MM-DD>.md`. Then layer the
+   triage on top — `pull_threads.py` for **awaiting-my-reply** — as derived signal, not a replacement for
+   the archive. A **human, non-automated sender NOT in Attio** → don't archive; flag it in the report as a
+   possible new lead. Never archive the whole mailbox (automated/no-reply/newsletters excluded). Stamp
+   `integrations/gmail/_work/LAST_SYNCED`. No auth → skip + note.
 5. **Slack (if auth configured — log + channel, like Gmail).** Pull deal-tied conversations only
    (never the whole workspace), and pull each one **complete — every top-level message AND every thread
    reply** (`--days 0 --threads`); a bounded window silently drops new replies on older threads, so don't

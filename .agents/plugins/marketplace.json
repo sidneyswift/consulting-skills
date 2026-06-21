@@ -1,0 +1,21 @@
+{
+  "name": "consulting-plugin",
+  "interface": {
+    "displayName": "Consulting OS"
+  },
+  "plugins": [
+    {
+      "name": "consulting-os",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/sidneyswift/consulting-plugin.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

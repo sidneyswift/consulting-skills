@@ -25,7 +25,14 @@ Non-negotiable rules for every email this practice sends. `consulting-email-atom
    - **Granola notes:** `integrations/granola/Recoup/prospects|clients/<deal>/`.
    - **Temperature + posture:** the `consulting-lead-temperature` record on the deal dashboard. If it
      is missing or stale (not recomputed since the last touch), run that skill first.
-   Get every name, title, and role right. Then decide **who the email is actually for**: the exec
+   - **What they engaged with (content-sourced leads):** read the ACTUAL post/article the person
+     reacted to or commented on, not just their one-line comment. The comment only makes sense against
+     it ("let me into this walled garden" means nothing until you read the post that announced the
+     beta). Pull it from `integrations/linkedin/published/<date>-posts.json` (the `content` field) or
+     the live post. The `consulting-lead-context` skill runs this whole gather end to end.
+   **Resolve it yourself before asking the human.** Punting "confirm X before I send" is the last
+   resort, only after these sources are exhausted. If X is in a post, a profile, a thread, or a
+   company's homepage, go get it. Get every name, title, and role right. Then decide **who the email is actually for**: the exec
    sponsor (keep it light, route to the team) vs. the hands-on POC (go deep on their actual pain).
    Target the message and the ask to that person, not to the company in general. Let the temperature
    set the **objective**, not just the tone: hot = advance or close with a direct ask; cooling =

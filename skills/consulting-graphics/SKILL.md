@@ -62,6 +62,7 @@ To ship the same design across platforms and sizes:
 | Template | Style | Best for | Reference |
 |----------|-------|----------|-----------|
 | `elegant-founder` | Light sky bg, Instrument Serif italic, black/white, editorial | Thought leadership, data breakdowns, industry analysis | [references/elegant-founder.md](references/elegant-founder.md) |
+| `framework-infographic` | Warm cream bg, burnt-orange + pastel color-coded blocks, chunky display type | "Save this" teaching graphics: a named acronym framework + worked examples (the reach + lead-magnet engine) | [references/framework-infographic.md](references/framework-infographic.md) |
 
 To add a template: create `references/<name>.md` with the same structure (visual identity, typography, layout rules, content-block types, HTML shell, quality checklist) and put assets in `assets/templates/<name>/`. Templates describe *style*; `dimensions.md` describes *size*. A good template notes how its type scale adapts across formats.
 

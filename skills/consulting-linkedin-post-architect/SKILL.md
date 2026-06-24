@@ -30,7 +30,7 @@ media. Map the shapes onto Sid's substance.
    ("PS: … join the waitlist. Or don't."). Never both. The PS is how a post feeds the funnel
    (`consulting-linkedin-funnel-architect`).
 6. **Decide on an image.** ~85% of top posts carry one. If it teaches a framework, pair a "save this"
-   infographic → hand off to `consulting-graphics` (template: `framework-infographic`). If it's
+   infographic → hand off to `consulting-graphics` (template: `framework-blocks`). If it's
    commentary, a meme/screenshot may outperform. Otherwise a branded text-on-image card.
 7. **Run voice + ship.** Pass the draft through `consulting-copywriting` (voice/anti-slop floor), then
    `consulting-linkedin-publisher`. Never auto-send.

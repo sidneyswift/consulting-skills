@@ -9,29 +9,33 @@ Generate on-brand social media graphics from content, at the right dimensions fo
 
 Two independent choices drive every graphic:
 - **Format** = the dimensions/aspect ratio (square, 4:5, story, banner, pfp, thumbnail, pin…). See `references/dimensions.md`.
-- **Template** = the visual style (colors, type, layout). See `references/<template>.md`.
+- **Template** = the *composition* (layout + which color field + the dominant element). See `references/<template>.md`.
+
+All templates share **one brand DNA** — palette, type, logo, footer — defined in
+**`consulting-tasteful-design/DESIGN.md`**. That's the trick: a bold infographic and a dark quote card look like
+the *same brand* without looking *the same*. Pick the template by what the content needs, and **vary it
+across a series** — making everything look identical is the failure mode this kit exists to fix.
 
 You can render the *same* template at *many* formats — that's how you create one design for every platform and size.
 
 ## Setup
 
-**Step 0: Check configuration**
+**Step 0: Load the brand + the kit**
 
-1. Read `~/.config/sid/identity.md` (or `~/.config/<owner>/identity.md`). This has the brand name, logo, handle, voice, and audience. If it doesn't exist, ask the user for their name, brand, handle, and audience — then create it. Shared across all skills.
-2. Read `~/.config/consulting-graphics/.env`. If it doesn't exist or lacks `SETUP_COMPLETE=true`, this is a first run:
-   - Ask: "Which template should I default to?" (currently: `elegant-founder`)
-   - Ask: "What platform/format are graphics primarily for?" (e.g. linkedin / x / instagram, feed / story / carousel)
-   - Write answers to `~/.config/consulting-graphics/.env` with `SETUP_COMPLETE=true`
-
-If both exist and setup is complete, proceed to the workflow.
+1. Read **`consulting-tasteful-design/DESIGN.md`** — the brand source of truth: the CSS palette, fonts, the
+   standard footer signature (Recoup mark · Sidney Swift · recoupable.com), and the "bold, not boring"
+   principles every template builds on. **Always read this before composing.** Never hardcode a value
+   that disagrees with it; for anything it doesn't cover (e.g. audience), ask — don't invent.
+2. Read `~/.config/consulting-graphics/.env` for `DEFAULT_TEMPLATE` + primary platform/format. If it lacks
+   `SETUP_COMPLETE=true`, ask which template to default to and the primary platform/format, then write it.
 
 ## Workflow
 
 1. **Identify the format(s).** What is being made and for where? Look up the exact dimensions, aspect ratio, file specs, and safe zone in `references/dimensions.md`. If the user names a platform but not a placement, default to the highest-engagement feed format: **1080×1350 (4:5)**.
-2. **Choose the template** (visual style). Use `DEFAULT_TEMPLATE` from `.env` or `elegant-founder`. Read `references/<template>.md` for full specs. User can override per request.
-3. **Apply brand from identity.** Use the brand name, logo SVG, and handle for footers/close slides/profile marks.
+2. **Choose the template** (the composition) by what the *content* is, not a default look: `framework-blocks` for teaching/lists/how-tos, `statement` for hooks/POVs/quotes/announcements, `stat` for a number or proof, `editorial` for the occasional restrained piece. Read `consulting-tasteful-design/DESIGN.md`, then `references/<template>.md`. Across a batch, deliberately mix them.
+3. **Apply brand from `DESIGN.md`.** Use the brand name, logo SVG, and handle for footers/close slides/profile marks.
 4. **Compose for the format.** Match the layout to the canvas — a 4:5 feed post, a 9:16 story, a 4:1 banner, and a circular pfp are different compositions, not the same art stretched. Respect the safe zone for the format (see dimensions.md). For multi-slide carousels, one idea per slide.
-5. **Generate HTML** sized to the target canvas. Set `body { width: Wpx; height: Hpx; }`. Replace `BRAND_NAME` with the brand from identity; use the identity logo SVG.
+5. **Generate HTML** sized to the target canvas. Set `body { width: Wpx; height: Hpx; }`. Replace `BRAND_NAME` with the brand from `DESIGN.md`; use its logo SVG.
 6. **Render to PNG** via Playwright at the matching viewport:
 
    ```bash
@@ -57,14 +61,23 @@ To ship the same design across platforms and sizes:
 - **Landscape, banners, profile pictures, thumbnails** (16:9, 1.91:1, 3:1, 4:1, circle) have very different proportions — give them a **bespoke composition** rather than cramming the portrait layout in. Keep the same colors, type family, and logo so the set stays cohesive.
 - **Keep critical content centered.** For 9:16, the *center-square method* (all key elements inside a centered 1080×1080) lets one asset survive Feed/Story/Reel crops. See dimensions.md.
 
-## Available templates
+## Available templates (the kit — all share `DESIGN.md`)
 
-| Template | Style | Best for | Reference |
-|----------|-------|----------|-----------|
-| `elegant-founder` | Light sky bg, Instrument Serif italic, black/white, editorial | Thought leadership, data breakdowns, industry analysis | [references/elegant-founder.md](references/elegant-founder.md) |
-| `framework-infographic` | Warm cream bg, burnt-orange + pastel color-coded blocks, chunky display type | "Save this" teaching graphics: a named acronym framework + worked examples (the reach + lead-magnet engine) | [references/framework-infographic.md](references/framework-infographic.md) |
+| Template | Field | Dominant element | Best for | Reference |
+|----------|-------|------------------|----------|-----------|
+| `framework-blocks` | light + dark header band | a named, color-coded framework (numbered or acronym variant) | teaching / "save this" infographics, lists, how-tos — the reach + lead-magnet engine | [references/framework-blocks.md](references/framework-blocks.md) |
+| `statement` | full-bleed dark | one huge line | hooks, contrarian POVs, manifestos, quote cards, announcements | [references/statement.md](references/statement.md) |
+| `stat` | dark or light | one giant number | data drops, proof, milestones, before/after | [references/stat.md](references/stat.md) |
+| `editorial` | crisp light, minimal | a quiet serif headline | the occasional restrained, premium piece — **one option, not the default** | [references/editorial.md](references/editorial.md) |
 
-To add a template: create `references/<name>.md` with the same structure (visual identity, typography, layout rules, content-block types, HTML shell, quality checklist) and put assets in `assets/templates/<name>/`. Templates describe *style*; `dimensions.md` describes *size*. A good template notes how its type scale adapts across formats.
+> **Taste authority:** `consulting-tasteful-design` is the house north star for look-and-feel across
+> every medium; this kit is its still-graphics implementation. Brand tokens (color/type/logo/footer)
+> live in **`consulting-tasteful-design/DESIGN.md`** — read it first. Default is bold (`framework-blocks`); a
+> single minimal template is what made everything samey, so `editorial` is one choice, not the floor.
+
+To add a template: create `references/<name>.md` (visual identity, layout rules, a complete HTML shell
+using the tokens, quality checklist). Templates own *composition*; `DESIGN.md` owns *brand*;
+`dimensions.md` owns *size*.
 
 ## Dimensions & safe zones
 
@@ -79,11 +92,16 @@ All platform sizes, aspect ratios, file specs, profile/banner safe zones, 9:16 s
 
 ## Content principles
 
+The full "bold, not boring" stance + the anti-AI-slop checklist live in **`consulting-tasteful-design`**
+(`DESIGN.md`). The essentials:
+
 - Every graphic/slide earns its place — if it adds no new idea, cut it.
-- Lead with data over opinion when numbers are available; the number is the design.
+- **Commit to a color field** (full-bleed dark or crisp light). No pale washed-out gradients — that's the slop tell.
+- **One thing is huge** — a hook, a number, or a framework, legible as a thumbnail.
+- **Color carries meaning:** `--accent` for structure, one `--signal` pop for the eye-hit. Never rainbow.
+- **Make it saveable:** real numbers, named frameworks, worked examples (specificity is the design).
 - The hook (slide 1 / the headline) decides whether anyone engages — spend disproportionate effort there.
-- Supporting text is noticeably quieter than headlines (smaller, lighter).
-- Whitespace is a feature: ≥40% of a feed graphic should be empty.
+- **Vary the template across a series.** Sameness is the failure mode this kit exists to fix.
 - Mobile-first: if it doesn't read at phone-thumbnail scale, it fails.
 
 ## Output

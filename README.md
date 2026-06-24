@@ -6,7 +6,7 @@ Each skill is a folder with a `SKILL.md` (frontmatter `name` + `description`, th
 Authored here → packaged into a plugin → installed → triggers non-deterministically by description.
 See `_packaging/README.md` for the lifecycle and `SKILL-ROADMAP.md` for the full catalog + priorities.
 
-## All skills (27)
+## All skills (50+)
 
 **Spine / orchestration**
 - `consulting-call-processor` — auto-manage loop: ingest any new material end to end
@@ -46,6 +46,10 @@ See `_packaging/README.md` for the lifecycle and `SKILL-ROADMAP.md` for the full
 - `consulting-positioning-refiner` — sharpen the message
 - `consulting-market-scanner` — niche intel + buying signals
 - `consulting-skill-packager` — bundle skills into an installable plugin
+
+**Visual & video**
+- `consulting-tasteful-design` — house look-and-feel north star (palette, type, spacing, anti-AI-slop) that every visual skill defers to
+- `consulting-hyperframes-video` — make any video / animation / motion graphic; HeyGen's HyperFrames toolkit folded into one house skill (11 workflow `modes/` + 6 `engine/` packs), renders video from HTML via `npx hyperframes`
 
 ## Make them auto-trigger
 They're authored as files now. Run `consulting-skill-packager` (or the `create-cowork-plugin`

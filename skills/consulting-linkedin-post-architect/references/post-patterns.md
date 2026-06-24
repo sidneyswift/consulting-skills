@@ -73,7 +73,7 @@ Never use both in one post. Most posts should drive comments; reserve the PS for
 ## Infographic pairing
 ~85% of top posts carry an image. Decide the image job:
 - **Teaching post → "save this" infographic.** A named acronym framework + worked examples, branded
-  header/footer. Hand to `consulting-graphics` with template `framework-infographic`. These get saved
+  header/footer. Hand to `consulting-graphics` with template `framework-blocks`. These get saved
   and re-shared (reach beyond followers) and double as lead magnets.
 - **Commentary post → meme / annotated screenshot.** The visual is the joke/argument.
 - **Story/manifesto → branded text-on-image card** or a relevant photo.

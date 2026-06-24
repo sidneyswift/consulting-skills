@@ -11,13 +11,15 @@ becomes many platform posts later (LinkedIn, X, newsletter) — write the pillar
 
 The engine drafts; **Sid publishes.** Quality over cadence.
 
-## Output — one folder per article
+## Output — one pillar bundle (slug folder) in drafts/
 ```
-content/articles/drafts/<topic-slug>-<YYYY-MM-DD>/
+content/drafts/<topic-slug>-<YYYY-MM-DD>/
   <article-slug>.md    the pillar article
   linkedinpost.md      the LinkedIn post derived from / promoting the article
   thumbnail.png        the on-brand graphic
 ```
+(A pillar is the *folder* shape of a draft; a one-off post/graphic is a single file in `content/drafts/`.
+See `content/AGENTS.md`.)
 
 ## Rails
 1. **Never auto-publish.** Drafts only; Sid reviews + publishes via `consulting-linkedin-publisher` (Postbridge).
@@ -31,8 +33,8 @@ content/articles/drafts/<topic-slug>-<YYYY-MM-DD>/
    newer than `content/_work/LAST_DRAFTED` (`knowledge/insights/`, `content/ideas/`). `git log` for today.
 
 1. **Pick ONE topic** — the strongest, most specific fresh insight with a real story / POV from an actual
-   call. Dedup vs `content/published/` and `content/articles/` (never rewrite a published pillar). Slugify
-   the topic and make the folder `content/articles/drafts/<topic-slug>-<YYYY-MM-DD>/`.
+   call. Dedup vs `content/published/` and existing `content/drafts/` (never rewrite a published pillar).
+   Slugify the topic and make the bundle folder `content/drafts/<topic-slug>-<YYYY-MM-DD>/`.
 
 2. **Write the ARTICLE** (the pillar). Read **`consulting-copywriting`** first (voice-principles, anti-slop,
    formats §blog/articles, and long-form-essay architecture for 1,000+ words). Lead with the counterintuitive,
@@ -43,11 +45,13 @@ content/articles/drafts/<topic-slug>-<YYYY-MM-DD>/
    that teases/promotes the article (don't just paste the intro). Save as `linkedinpost.md` (frontmatter:
    `source` = the article path, `hook`, `status: draft`).
 
-4. **Make the THUMBNAIL.** Read **`consulting-graphics`** — pick the thumbnail/landscape format + the brand
-   template (`elegant-founder`), compose the HTML from identity (`~/.config/sid/identity.md`), and render via
-   Playwright (`npx playwright screenshot --viewport-size="W,H" file.html thumbnail.png`). Save `thumbnail.png`
-   in the folder (keep the `.html` alongside). If the graphics config isn't set up, save the thumbnail HTML and
-   flag the PNG step in the report — don't block the article on it.
+4. **Make the THUMBNAIL.** Read **`consulting-graphics`** (+ the taste north star **`consulting-tasteful-design`**, whose
+   `DESIGN.md` holds the brand tokens). Pick the template that fits the piece — `statement` for a
+   hook/POV, `framework-blocks` for a teaching breakdown, `stat` for a proof number, `editorial` for a
+   restrained one — and **vary it run to run** so the feed isn't samey (bold is the default, not the pale
+   editorial look). Compose from the brand tokens in `DESIGN.md` and render via Playwright
+   (`npx playwright screenshot --viewport-size="W,H" file.html thumbnail.png`). Save `thumbnail.png` (keep the
+   `.html` alongside). If graphics config isn't set up, save the HTML and flag the PNG step — don't block the article.
 
 5. **Report + score + commit.** Write `business/ops/content-reports/<date>.md` (**Article · Post · Thumbnail ·
    Skipped (why) · Needs Sid**), run `python evals/content/score_run.py` (composite + flags at top), commit

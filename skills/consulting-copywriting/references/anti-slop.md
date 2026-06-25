@@ -170,6 +170,60 @@ Principle: no human would say that sentence out loud. It's the AI bottling an id
 - **Metronome rhythm**: vary sentence and paragraph length
 - **Knowledge disclaimers**: no "As of my last update", "Based on available information"
 
+## More slop patterns (bad → good)
+
+Caught in real drafts. Each is default-off: cut it unless it's doing specific work.
+
+### Writerly surprise setups
+Labeling something as surprising or unexpected instead of just stating it. The fact creates the surprise; announcing it is throat-clearing.
+
+- Bad: "Then I got stuck on a question I didn't expect. Where does it live?"
+- Good: "Then I got stuck on a question: where does it live?"
+
+Same family: "something I never saw coming," "a problem I wasn't ready for," "a question that stopped me cold."
+
+### Present perfect where simple past is natural
+"I've [verb]" for one finished action reads as résumé-speak. Use plain past.
+
+- Bad: "I've spent more time on that question than on the skill itself."
+- Good: "I spent more time on that question than on the skill itself."
+
+Also: "I've been thinking about this" → "I keep thinking about this" / "I think."
+
+### Empty adjective on a noun
+An adjective that draws no real contrast is filler, same rule as "actually" or "really." If deleting it changes nothing, delete it.
+
+- Bad: "I still don't have a clean answer."
+- Good: "I still don't have an answer."
+
+Common offenders: a clean answer, a clear answer, a real solution, a simple fix, the actual reason. Keep only for a true contrast ("the signed contract, not the draft").
+
+### Significance pointers
+A sentence whose only job is to tell the reader the next or previous line matters. It carries no content. Make the point sharper, or cut the pointer.
+
+- Bad: "That last part is what matters."
+- Bad: "This matters more than it sounds."
+- Bad: "And that changes everything." / "Here's the important part."
+- Good: delete it and state the substance directly.
+
+### Vague-authority headings and claims
+"What most companies miss," "the mistake everyone makes," "what nobody tells you." To a sharp reader this signals a pitch, not an observation (see voice-principles → evidence over vague authority). Use a direct, specific heading.
+
+- Bad: "## Two opportunities most companies are missing"
+- Good: "## Two opportunities: internal IP, and a customer channel"
+
+### Answer the question you posed
+When a header or line asks a question, answer it plainly and first. Circling it with clever distinctions to sound smart leaves the reader without the answer.
+
+- Bad (under "Can't we just give this to IT?"): "It's the right instinct, and it underdelivers, for the reason I hit earlier. The people who own governance often don't build skills..."
+- Good: "At most non-technical companies, IT is the slowest team to pick up frontier tech. When something new shows up, the safe, easy call is to block it. With AI that's an expensive mistake: the tools move fast enough that blocking what you haven't understood leaves you behind."
+
+### The client-work trust lens (highest stakes)
+Before publishing anything that touches a client engagement (money, IP, ownership, who did what), read it from the client's chair. Brevity that glosses a sensitive claim reads as dismissive or self-serving and quietly costs trust. Add the sentence or parenthetical that shows respect and shared understanding, even at the cost of a few words.
+
+- Bad: "One client's contract says they own all work product, which means every skill I build in their repository is theirs, not mine. That's a clean answer. Most companies don't have one."
+- Good: "In one of my engagements, the contract is explicit: the client owns all work product, so every skill I build in their repo is theirs. I think that's the right setup (clear ownership keeps the capability with the company, not with me or any one person). Most companies leave it ambiguous, and the ambiguity is where it gets messy."
+
 ## Anti-overfitting
 
 Do not imitate the voice too hard. Do not force jokes or slang. Do not make every sentence punchy or every paragraph 1 sentence.

@@ -39,8 +39,11 @@ Layer a **meta-pattern** on top — how to fill PLACE:
 - **Contrarian reversal:** "No, I DON'T work 3 days/week and make money in my sleep."
 - **Curiosity gap / open loop:** "It's dead simple:" / "Are we… okay??"
 
-Rules: ~1–2 short sentences (~100 chars). Put a **number in the hook** (top posts do ~58% of the time).
-Never name the offer in line 1.
+Rules (updated from a fresh 2026-06-25 scrape of 189 last-month top posts — full data-backed set in
+the **`consulting-linkedin-hooks`** skill): keep it **≤60 chars / ~9 words** (77% of top hooks are this
+short), use **no question opener** (0% of top hooks were questions), and treat a **number as optional**
+— only ~18% of top hooks use one, and only as a vivid specific ("$550,000 job at 38"), never a listicle
+count. Never name the offer in line 1.
 
 ## STORM — the body structure (story + expertise posts)
 - **S**tuck — the pain that stops the scroll (your hook)

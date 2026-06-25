@@ -19,9 +19,11 @@ media. Map the shapes onto Sid's substance.
 ## Workflow
 1. **Pick the archetype** (what job this post does): personal-story · expertise/teaching · sales/offer ·
    meme/commentary · manifesto/contrarian. Selection guidance + examples → `references/post-patterns.md`.
-2. **Write the hook** (line 1 = the whole game). Use the **PLACE** formula (Person · Location · Action ·
-   Cost · Era) + a meta-pattern (time+number, confession, contrarian, curiosity gap). Full formula +
-   worked hooks → `references/post-patterns.md`.
+2. **Write the hook** (line 1 = the whole game). For the deep, data-backed hook engine — 8 patterns
+   reverse-engineered from a fresh monthly top-performer scrape, plus generate/critique — use
+   **`consulting-linkedin-hooks`** (it supersedes the quick PLACE notes here). Quick version: the
+   **PLACE** formula (Person · Location · Action · Cost · Era) + a meta-pattern (confession, contrarian,
+   curiosity gap), in `references/post-patterns.md`.
 3. **Structure the body** with **STORM** (Stuck → Thirst → Obstacle → Revelation → Mirror+proof) for
    story/expertise posts. Other archetypes have their own shapes in the reference.
 4. **Format for mobile:** short lines, one idea per line, a bulleted "receipts" middle, ≤1 ALL-CAPS
@@ -41,6 +43,6 @@ PLACE + STORM frameworks, the formatting fingerprint (with the data behind it), 
 the infographic-pairing spec. Read it whenever writing or critiquing a post.
 
 ## Chains with
-`consulting-content-idea-generator` → `consulting-content-drafter` → **this** → `consulting-copywriting`
-→ `consulting-graphics` (if an image) → `consulting-linkedin-publisher`. Cadence note: the source
+`consulting-content-idea-generator` → `consulting-content-drafter` → **this** (+ `consulting-linkedin-hooks`
+for line 1) → `consulting-copywriting` → `consulting-graphics` (if an image) → `consulting-linkedin-publisher`. Cadence note: the source
 operator posts ~6×/week from one morning slot — volume + consistency is the multiplier.

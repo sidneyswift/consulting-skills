@@ -2,6 +2,8 @@
 
 Read this before sending any copy. These patterns make text sound machine-written.
 
+This is the **foundation** — the floor, not the ceiling. It removes the patterns a model emits on autopilot. Once the slop is gone, add deliberate human texture (the seasoning) per [human-texture.md](human-texture.md). These rules target the *reflexive* version of a pattern; an intentional, content-bearing choice (a vivid earned image that passes the permission test, a fragment, a parenthetical aside) is craft, not slop. The bans still hold — they're what keeps texture from sliding back into filler.
+
 ## Banned vocabulary
 
 Do not use: delve, realm, harness, unlock, tapestry, paradigm, cutting-edge, revolutionize, intricate, intricacies, showcasing, crucial, pivotal, surpass, meticulously, vibrant, unparalleled, underscore, leverage, synergy, innovative, game-changer, testament, commendable, meticulous, highlight, emphasize, boast, groundbreaking, align, foster, showcase, enhance, holistic, garner, accentuate, pioneering, trailblazing, unleash, versatile, transformative, redefine, seamless, optimize, scalable, robust, breakthrough, empower, streamline, frictionless, elevate, adaptive, effortless, data-driven, insightful, proactive, mission-critical, visionary, disruptive, reimagine, unprecedented, intuitive, leading-edge, synergize, democratize, accelerate, state-of-the-art, dynamic, immersive, predictive, transparent, proprietary, integrated, plug-and-play, turnkey, future-proof, paradigm-shifting, supercharge, enduring, interplay, valuable, captivate

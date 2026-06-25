@@ -73,6 +73,14 @@ Before sending any copy, read and apply [references/anti-slop.md](references/ant
 
 These rules are the quality floor for all copy. No exceptions.
 
+## Human texture (the seasoning layer)
+
+Anti-slop is the foundation; humanizing is the seasoning. They stack — they don't conflict. The banned patterns are the tokens a model emits on autopilot (reflexive filler that carries no content). Human texture is the deliberate layer you add on top — a tangent, a fragment, an undercut, the real unflattering thought, the exact detail — so the copy reads like a specific person wrote it.
+
+The order is fixed: write it → strip the slop ([references/anti-slop.md](references/anti-slop.md)) → season for humanity. Never season to cover up slop. The test for any flourish: did I choose this, and does it carry something only I would say — or is it a reflexive pattern? Intentional and content-bearing, keep it. Reflexive and empty, cut it.
+
+When writing anything meant to sound human (social posts, newsletters, essays, warm emails), read [references/human-texture.md](references/human-texture.md). It contains the humanizing moves with worked verbatim examples (talk to the reader, undercut your authority, break rhythm, render the inner monologue, break the fourth wall, quote real dialogue, earned comparison), a full teardown of Shaan Puri's short-essay system (the named-format play, the Story → Principle → Coined-term → Reader-challenge skeleton, a hook menu, signature devices), and how to set all of it to Sid's register.
+
 ## Format rules
 
 When writing for a specific format, read the relevant section of [references/formats.md](references/formats.md):

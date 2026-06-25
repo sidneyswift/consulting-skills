@@ -14,9 +14,15 @@ On request ("copy-edit / edit / hard edit / editor pass / review this draft"), a
 
 1. **Pick the target.** The one file to edit (default: the draft in question; if unclear, ask). Note its kind (pillar article, post, email) and rough length.
 
-2. **Locate the house standard.** Find the `consulting-copywriting` references (sibling skill in the same `skills/` dir): `references/anti-slop.md` and `references/voice-principles.md`, plus `references/long-form-essay.md` for pieces of 1,000+ words. The reviewer reads these so "slop" means the *house* definition, not a generic one. Resolve their absolute paths (glob for `consulting-copywriting/references/anti-slop.md` if needed).
+2. **Resolve the paths before dispatch (the step that makes a run smooth).** The subagent starts with fresh context and no knowledge of this repo — it only knows what you hand it as **absolute paths**. Resolve all of these and substitute them into the brief's `{PLACEHOLDERS}`:
+   - `{ARTICLE_PATH}` — the target file from step 1.
+   - `{ANTISLOP_PATH}` — `consulting-copywriting/references/anti-slop.md`
+   - `{VOICEPRINCIPLES_PATH}` — `consulting-copywriting/references/voice-principles.md`
+   - `{LONGFORM_LINE}` — for a 1,000+ word piece only, a third `-` bullet pointing at `consulting-copywriting/references/long-form-essay.md`; otherwise delete the line.
 
-3. **Dispatch ONE fresh-context subagent, read-only.** It reviews and returns notes; it does NOT touch any file. Paste the **Reviewer brief** below verbatim, filling the `{PLACEHOLDERS}` with absolute paths.
+   `consulting-copywriting` is a sibling skill in the same `skills/` dir. Find it with a glob for `**/consulting-copywriting/references/anti-slop.md` and reuse that directory for the others. Point at the **canonical copy you maintain** (in this repo: `plugin/skills/consulting-copywriting/references/…`), not a stale installed cache — the anti-slop list changes often, and the reviewer must edit against the current one. These reference files define "slop" and "voice" as the *house* standard, not a generic notion.
+
+3. **Dispatch ONE fresh-context subagent, read-only.** It reviews and returns notes; it does NOT touch any file. Paste the **Reviewer brief** below verbatim, with the `{PLACEHOLDERS}` filled from step 2.
    - Claude Code: Agent/Task tool, `subagent_type: generalPurpose`, `readonly: true`.
    - Other harnesses / subagents disabled: see the harness map in `consulting-hyperframes-video/engine/hyperframes-core/references/subagent-dispatch.md`; if none, run the brief yourself in a separate pass, reading the article cold.
 
@@ -67,8 +73,6 @@ Return your notes in exactly this shape, no preamble:
    - Fix: the concrete rewrite, or "cut".
 3. Title: keep, or 2-3 stronger options.
 ```
-
-`{LONGFORM_LINE}`: for a 1,000+ word piece, set this to a third bullet pointing at the long-form essay reference (`- {abs path to consulting-copywriting/references/long-form-essay.md}`); otherwise delete the line.
 
 ## Notes
 - The subagent is a **reviewer, not an author** — keep all edits in the main agent so voice and final judgment stay in one hand.

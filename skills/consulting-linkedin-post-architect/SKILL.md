@@ -8,7 +8,7 @@ description: Structure a high-performing LinkedIn post — pick the archetype, w
 The structure layer for LinkedIn posts. The drafter gives you the idea; this gives the post its
 **shape** (hook → body → CTA → image); `consulting-copywriting` enforces voice; then
 `consulting-linkedin-publisher` ships it. Patterns are reverse-engineered from a real top-performing
-operator — origin evidence: `positioning/swipe/posts/magali-dereu/ANALYSIS.md` (118 posts).
+operator — origin evidence: `swipe/posts/magali-dereu/ANALYSIS.md` (118 posts).
 
 ## The one rule: steal structure, not persona
 Use the **shapes** below (hook formulas, post structures, formatting). Do **not** import the source

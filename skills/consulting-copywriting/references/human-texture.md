@@ -43,7 +43,7 @@ an empty sentence.
 
 Shaan Puri's "One Minute Blog" essays are a master class in human-feeling short prose. Study the
 **moves**; set them to Sid's register (Shaan's persona — slang, profanity, NBA/celebrity palette — is
-his, not ours; the *techniques* transfer cleanly). Full teardown + index: `positioning/swipe/posts/shaan-puri/`.
+his, not ours; the *techniques* transfer cleanly). Full teardown + index: `swipe/posts/shaan-puri/`.
 
 Several of these extend principles already in [voice-principles.md](voice-principles.md) (parenthetical
 personality, sentence rhythm, acknowledge the reader, say it out loud). This file is the deep, worked-
@@ -175,7 +175,7 @@ sign-off can become a brand asset — pick one that fits Sid's voice, not a borr
 
 ## Shaan's full writing system (the teardown)
 
-The moves above sit inside a repeatable system. (Condensed from `positioning/swipe/posts/shaan-puri/ANALYSIS.md`.)
+The moves above sit inside a repeatable system. (Condensed from `swipe/posts/shaan-puri/ANALYSIS.md`.)
 
 ### The named, constrained, weekly format
 His biggest move isn't a sentence trick — it's that **the format is the brand**. Not "a newsletter,"
@@ -301,7 +301,7 @@ reflexive and empty, it's slop again.
 ---
 
 ## Cross-links
-- **Source teardown + essay index:** `positioning/swipe/posts/shaan-puri/` (`ANALYSIS.md`, `essays-index.md`)
+- **Source teardown + essay index:** `swipe/posts/shaan-puri/` (`ANALYSIS.md`, `essays-index.md`)
 - **Foundation:** [anti-slop.md](anti-slop.md) — the floor this layer sits on
 - **Voice system:** [voice-principles.md](voice-principles.md) — parentheticals, rhythm, reader-acknowledgment, named concepts
 - **Post shaping for social:** `consulting-linkedin-post-architect` (hooks + archetypes)

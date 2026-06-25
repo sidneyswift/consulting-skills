@@ -1,6 +1,6 @@
 # LinkedIn hook patterns (data-backed)
 
-Origin evidence: `positioning/swipe/2026-06-25-hook-analysis.md` — a scrape of **189 last-month posts**
+Origin evidence: `swipe/2026-06-25-hook-analysis.md` — a scrape of **189 last-month posts**
 from 7 elite creators (Justin Welsh, Jasmin Alić, Lara Acosta, Ruben Hassid, Katelyn Bourgoin,
 Allie K. Miller, Magali Dereu), ranked by **real engagement** (reactions + comments + shares). Every
 example below is a real top-performing hook with its engagement; steal the **structure**, not the
@@ -107,5 +107,5 @@ The *only* reliably good use of a number in a hook: a vivid, near-unbelievable s
 
 ## Provenance
 Full corpus, per-creator engagement-ranked READMEs, and the ranking script:
-`positioning/swipe/posts/<creator>/` and `positioning/swipe/_work/analyze_hooks.py`. Re-run monthly to
+`swipe/posts/<creator>/` and `swipe/_work/analyze_hooks.py`. Re-run monthly to
 keep this current — hooks decay; what worked last month is the only "best practice" worth trusting.

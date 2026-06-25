@@ -23,7 +23,7 @@ Bold, scannable, confident. Uses the shared brand DNA in the project's `DESIGN.m
 
 ## Acronym variant (the mnemonic infographic)
 
-When the framework is a **named acronym** (PLACE, STORM — see `positioning/swipe/posts/magali-dereu/ANALYSIS.md`),
+When the framework is a **named acronym** (PLACE, STORM — see `swipe/posts/magali-dereu/ANALYSIS.md`),
 swap the vertical numbered blocks for a horizontal **letter row**: each big `Space Grotesk` letter in
 its own column with a label + one-line description, in a single white card on the light field. Add an
 **"Examples"** band below with 2–3 **worked examples** (real ones, with a proof number where you have

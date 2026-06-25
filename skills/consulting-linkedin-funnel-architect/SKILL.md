@@ -8,7 +8,7 @@ description: Architect or audit a LinkedIn profile-as-funnel — turn the profil
 Treat the LinkedIn profile as a **landing page**, not a résumé. Every section routes a visitor toward
 one of two offers: a free top-of-funnel (newsletter / community waitlist) and a high-ticket bottom
 (qualifying application). Posts feed it via soft PS-CTAs. Origin evidence (a real operator's working
-funnel, screenshots + teardown): `positioning/swipe/funnels/magali-dereu/README.md`.
+funnel, screenshots + teardown): `swipe/funnels/magali-dereu/README.md`.
 
 ## The one rule: steal structure, not persona
 Adopt the funnel *architecture*; keep Sid's voice (`consulting-copywriting`) and substance
@@ -41,7 +41,7 @@ Score each as present / weak / missing, with the fix:
   call" link. Gate by fit + budget so only real prospects reach a call. Fields that work: role,
   revenue band, "done-for-me vs. learn-it", prior-partner experience, and an explicit
   "ready to invest a premium" yes/no. (See the source operator's verbatim form:
-  `positioning/swipe/funnels/magali-dereu/buttons/work-with-me/waitlist.rtf`.)
+  `swipe/funnels/magali-dereu/buttons/work-with-me/waitlist.rtf`.)
 - **Map it to Sid's offers** in `positioning/offers.md` + `library/productized-offers/` — don't invent
   offers; wire existing ones into the ladder.
 

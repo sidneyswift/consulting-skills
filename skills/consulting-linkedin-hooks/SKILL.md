@@ -38,6 +38,6 @@ Then rewrite it 2–3 ways across different patterns and say which you'd ship an
 
 ## Keep it current
 Hooks decay; "best practice" is just "what got engagement last month." Re-run the scrape +
-`positioning/swipe/_work/analyze_hooks.py` monthly (or via `consulting-integrations-sync`) and refresh
+`swipe/_work/analyze_hooks.py` monthly (or via `consulting-integrations-sync`) and refresh
 `references/hook-patterns.md` from the new top set. Origin evidence + method:
-`positioning/swipe/2026-06-25-hook-analysis.md`.
+`swipe/2026-06-25-hook-analysis.md`.

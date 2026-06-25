@@ -16,7 +16,7 @@ credibility-led brand. So the agent's job is **targeting + drafting angles**, no
 
 ## The daily split (5 + 5)
 Aim for **~5 comments on ICP posts + ~5 on peer posts per day** (pattern from a top operator's system —
-`positioning/swipe/posts/magali-dereu/ANALYSIS.md`, image `46-1`):
+`swipe/posts/magali-dereu/ANALYSIS.md`, image `46-1`):
 - **ICP posts** = your buyers' posts → warm leads in public, no cold DMs needed.
 - **Peer posts** = creators **within ±50% of your follower count** → *their audience is your audience*,
   so commenting borrows reach. Find them in the Activity tab of your 20–50 ICPs and where the same

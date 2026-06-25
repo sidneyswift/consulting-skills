@@ -1,6 +1,6 @@
 # LinkedIn post patterns (the detailed playbook)
 
-Origin evidence: `positioning/swipe/posts/magali-dereu/ANALYSIS.md` (118-post pull). Steal the
+Origin evidence: `swipe/posts/magali-dereu/ANALYSIS.md` (118-post pull). Steal the
 structure, not the persona. All example fragments are the source operator's; rewrite in Sid's voice.
 
 ## Contents

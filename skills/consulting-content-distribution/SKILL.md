@@ -35,7 +35,7 @@ One finished article = the **canonical copy**. It travels as:
    - Promo post via `consulting-linkedin-publisher` (drafts/schedules through `integrations/linkedin/_work/publish.py`; prompts before sending).
    - Email via `consulting-email-atomizer` + `consulting-outbound-email`: a short broadcast to the list, `source:` = the article's insight, staged in `content/email/outbox/`.
    - Both link to the canonical URL.
-4. **Find the post + record the URL (no manual URL needed).** Run `python integrations/linkedin/_work/pull_posts.py --max 25 --yes`, locate the promo post by its hook, and write its URL into the bundle frontmatter (`url:`). This is how the agent stops asking Sid for the URL.
+4. **Find the post + record the URLs (no manual URL needed).** Run `python integrations/linkedin/_work/pull_posts.py --max 25 --yes`, locate the promo post by its hook, and record both URLs in the bundle frontmatter: `url:` = the linked article/pulse URL (pull_posts captures it from the post's `article.link`), `linkedin_post:` = the promo post (the engagement-monitoring target). This is how the agent stops asking Sid for any URL.
 5. **Monitor → leads (close the flywheel).** Capture a baseline (likes/comments/shares) and, on a cadence, `pull_engagement.py --post-url <url>` → `enrich.py` → `crossref_attio.py` to turn engagers into net-new Attio lead candidates (`consulting-linkedin-audience`). Re-check on the Friday cadence; promote to an unattended routine if Sid wants it hands-off.
 6. **Track state.** Write/update `distribution.md` in the bundle: each channel (status + URL), the canonical link, the companions, and the engagement baseline. One glance = where this piece lives and how it's doing.
 

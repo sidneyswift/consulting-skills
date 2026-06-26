@@ -19,7 +19,7 @@ Social selling: mine post engagement for warm leads and feed them into the pipel
    target account (`integrations/attio/` Target Accounts list), and engagement depth (comment > like).
 4. **Act.**
    - New high-fit people → create an Attio person (`relationship = lead`) and draft outreach
-     (chain `consulting-people-outreach` style messaging grounded in the post they engaged with).
+     (chain `consulting-outbound-email`; its context gather reads the full post they engaged with).
    - Existing contacts who re-engaged → flag for `consulting-followup-sequencer`.
 5. **Record.** Save the ranked candidate list to `integrations/linkedin/engagement/` and note any
    new Attio records created.

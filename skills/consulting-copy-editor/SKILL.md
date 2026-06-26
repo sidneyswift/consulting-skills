@@ -20,7 +20,7 @@ On request ("copy-edit / edit / hard edit / editor pass / review this draft"), a
    - `{VOICEPRINCIPLES_PATH}` — `consulting-copywriting/references/voice-principles.md`
    - `{LONGFORM_LINE}` — for a 1,000+ word piece only, a third `-` bullet pointing at `consulting-copywriting/references/long-form-essay.md`; otherwise delete the line.
 
-   `consulting-copywriting` is a sibling skill in the same `skills/` dir. Find it with a glob for `**/consulting-copywriting/references/anti-slop.md` and reuse that directory for the others. Point at the **canonical copy you maintain** (in this repo: `plugin/skills/consulting-copywriting/references/…`), not a stale installed cache — the anti-slop list changes often, and the reviewer must edit against the current one. These reference files define "slop" and "voice" as the *house* standard, not a generic notion.
+   `consulting-copywriting` is a sibling skill in the same `skills/` dir. Find it with a glob for `**/consulting-copywriting/references/anti-slop.md` and reuse that directory for the others. Point at the **canonical copy you maintain** (in this repo: `plugin/skills/consulting-copywriting/references/`), not a stale installed cache — the anti-slop list changes often, and the reviewer must edit against the current one. These reference files define "slop" and "voice" as the *house* standard, not a generic notion.
 
 3. **Dispatch ONE fresh-context subagent, read-only.** It reviews and returns notes; it does NOT touch any file. Paste the **Reviewer brief** below verbatim, with the `{PLACEHOLDERS}` filled from step 2.
    - Claude Code: Agent/Task tool, `subagent_type: generalPurpose`, `readonly: true`.

@@ -18,7 +18,7 @@ One finished article = the **canonical copy**. It travels as:
 
 **Companions (ship with every article):**
 - **A LinkedIn promo post** linking to the canonical URL (`consulting-linkedin-publisher`).
-- **An email to the list** ("I wrote this, here's why it matters") linking to the canonical URL (`consulting-email-atomizer` → staged in `content/email/outbox/`, never sent).
+- **An email to the list** ("I wrote this, here's why it matters") linking to the canonical URL (`consulting-email-atomizer` → staged in `email/outbox/`, never sent).
 
 **Parked (not solved yet — don't force it):**
 - Instagram / short-form reels. Revisit once the visual short-form workflow is nailed. Skipping it is correct, not a gap.
@@ -33,7 +33,7 @@ One finished article = the **canonical copy**. It travels as:
 2. **Homes:** republish the *same* article body to the blog and to X (as an Article). LinkedIn newsletter is usually already done by Sid. Don't rewrite per platform; only title/meta change.
 3. **Companions:**
    - Promo post via `consulting-linkedin-publisher` (drafts/schedules through `integrations/linkedin/_work/publish.py`; prompts before sending).
-   - Email via `consulting-email-atomizer` + `consulting-outbound-email`: a short broadcast to the list, `source:` = the article's insight, staged in `content/email/outbox/`.
+   - Email via `consulting-email-atomizer` + `consulting-outbound-email`: a short broadcast to the list, `source:` = the article's insight, staged in `email/outbox/`.
    - Both link to the canonical URL.
 4. **Find the post + record the URLs (no manual URL needed).** Run `python integrations/linkedin/_work/pull_posts.py --max 25 --yes`, locate the promo post by its hook, and record both URLs in the bundle frontmatter: `url:` = the linked article/pulse URL (pull_posts captures it from the post's `article.link`), `linkedin_post:` = the promo post (the engagement-monitoring target). This is how the agent stops asking Sid for any URL.
 5. **Monitor → leads (close the flywheel).** Capture a baseline (likes/comments/shares) and, on a cadence, `pull_engagement.py --post-url <url>` → `enrich.py` → `crossref_attio.py` to turn engagers into net-new Attio lead candidates (`consulting-linkedin-audience`). Re-check on the Friday cadence; promote to an unattended routine if Sid wants it hands-off.
@@ -49,6 +49,6 @@ One finished article = the **canonical copy**. It travels as:
 
 ## Filing
 - Promo post → the bundle's `linkedinpost.md`.
-- Email → `content/email/outbox/<date>-<slug>-article-announce.md` (status: draft).
+- Email → `email/outbox/<date>-<slug>-article-announce.md` (status: draft).
 - Distribution state + engagement baseline → the bundle's `distribution.md`.
 - Recurring engagement monitoring → a cadence (Friday review) or a dedicated `routines/` worker; the capability is the `integrations/linkedin/_work/` pull scripts + `consulting-linkedin-audience`.

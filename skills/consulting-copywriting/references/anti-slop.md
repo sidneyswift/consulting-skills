@@ -234,6 +234,12 @@ Two enumerations in consecutive sentences read mechanically; the cadence is a te
 
 The fix usually kills a repetition the second list was hiding (here, "knowledge leaves when people leave" had already been said twice earlier in the piece).
 
+### Colon overuse (the new em-dash)
+Once the em-dash is banned, the colon quietly takes its job: a setup-payoff colon on every page-turn. One or two are fine; stacked that densely they're the same metronome tell. Keep the colons that introduce a real list or a hard reveal; make the rest plain sentences.
+
+- Bad (a colon every turn): "The reason is what AI is doing: analysis, drafting, research. My default: run the best model. His answer: they don't. The better question: what did it produce?"
+- Good: keep the one that earns it ("His answer: they don't.") and rewrite the rest as sentences ("The reason is the kind of work AI now does. What matters is what it produced.").
+
 ## Anti-overfitting
 
 Do not imitate the voice too hard. Do not force jokes or slang. Do not make every sentence punchy or every paragraph 1 sentence.

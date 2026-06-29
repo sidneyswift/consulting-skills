@@ -25,7 +25,7 @@ mascot, lots of whitespace, flat — no photoreal, no gradients. Match the bundl
 tokens to the project **`DESIGN.md`**.
 
 ## Density & placement
-- **Open with a hero.** Every article gets a **hero thumbnail** — the title concept as one bold image — at the **very top, above the first line**. It doubles as the social/OG preview.
+- **Open with a hero.** Every article gets a **hero thumbnail** — the title concept as one bold image — at the **very top, above the first line**. Save it as the bundle `thumbnail.png` (the pillar convention); it doubles as the social/OG preview.
 - **Then ~1 diagram per major section/concept.** A 4-section pillar → a hero + ~4 section figures. Cap section figures at **~4–6**.
 - **Place each section figure at its break**, right after that section's point lands.
 - **Lead with the strongest archetype** (a comparison or a flow usually reads fastest).
@@ -41,8 +41,8 @@ tokens to the project **`DESIGN.md`**.
    ~3:2 in-article; 1:1 or 4:5 if it also runs as a post.
 4. **Run the bar** (below); regenerate on any miss.
 5. **Save + embed.** Write each to the piece's own bundle `…/images/<concept>.png` (see `content/AGENTS.md`).
-   Embed the **hero at the very top, above the first line** (`images/hero.png`); embed each section figure at
-   its break: `![alt](images/<concept>.png)`. Scratch/tests → `content/_work/article-images/`.
+   Embed the **hero at the very top, above the first line** (the bundle `thumbnail.png`); embed each section
+   figure at its break: `![alt](images/<concept>.png)`. Scratch/tests → `content/_work/article-images/`.
 
 ## Layout archetypes
 | Archetype | Use for | Shape |

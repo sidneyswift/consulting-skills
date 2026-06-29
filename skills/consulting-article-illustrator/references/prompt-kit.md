@@ -18,6 +18,11 @@ Then add **one** archetype block:
 
 ---
 
+## HERO / title card (the top image)
+> Layout: a wide hero banner. A big hand-lettered TITLE with a BLUE underline: "[TITLE]". One central
+> doodle that captures the article's core metaphor: [the metaphor in one phrase]. Poster-like — minimal,
+> bold, fewer elements than an inline figure, lots of whitespace. Wide 16:9.
+
 ## FLOW / pipeline
 > Layout: a left-to-right flow of [N] slightly-wobbly hand-drawn rounded boxes joined by hand-drawn
 > arrows. Box 1 (solid): "[LABEL]" with a small [icon] doodle. Box 2 (dashed, with a BLUE highlighter

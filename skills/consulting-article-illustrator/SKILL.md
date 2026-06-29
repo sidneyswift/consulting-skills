@@ -1,6 +1,6 @@
 ---
 name: consulting-article-illustrator
-description: Generate hand-drawn "whiteboard / excalidraw"-style explainer images for articles and posts — the doodle-marker diagrams that sit inside a pillar to explain a concept (a flow, a comparison, a loop, a stack, a hub-and-spoke, a numbered framework). Made with gpt-image-2 in the brand palette: light-grey background, black marker line work + hand-lettering, a single blue accent. Plans a figure set by article density (~1 per section) and embeds them inline. Use when asked to "make an article image / diagram / explainer / infographic", a "hand-drawn / sketch / whiteboard" visual, or to illustrate a blog post / LinkedIn article / pillar. NOT for clean HTML social graphics (use consulting-graphics) or anything animated (use consulting-hyperframes-video).
+description: Generate hand-drawn "whiteboard / excalidraw"-style explainer images for articles and posts — the doodle-marker diagrams that sit inside a pillar to explain a concept (a flow, a comparison, a loop, a stack, a hub-and-spoke, a numbered framework). Made with gpt-image-2 in the brand palette: light-grey background, black marker line work + hand-lettering, a single blue accent. Plans a figure set — a hero thumbnail at the top (above the first line; doubles as the social/OG preview) plus ~1 diagram per section — and embeds them inline. Use when asked to "make an article image / diagram / explainer / infographic / hero / thumbnail", a "hand-drawn / sketch / whiteboard" visual, or to illustrate a blog post / LinkedIn article / pillar. NOT for clean HTML social graphics (use consulting-graphics) or anything animated (use consulting-hyperframes-video).
 ---
 
 # Consulting Article Illustrator
@@ -25,13 +25,14 @@ mascot, lots of whitespace, flat — no photoreal, no gradients. Match the bundl
 tokens to the project **`DESIGN.md`**.
 
 ## Density & placement
-- **~1 diagram per major section/concept.** A 4-section pillar → ~4 figures; a single-idea post → **1 hero**. Cap **~4–6** per article.
-- **Place each at its section break**, right after that section's point lands.
-- **Lead concept → strongest archetype** (a comparison or a flow usually reads fastest).
+- **Open with a hero.** Every article gets a **hero thumbnail** — the title concept as one bold image — at the **very top, above the first line**. It doubles as the social/OG preview.
+- **Then ~1 diagram per major section/concept.** A 4-section pillar → a hero + ~4 section figures. Cap section figures at **~4–6**.
+- **Place each section figure at its break**, right after that section's point lands.
+- **Lead with the strongest archetype** (a comparison or a flow usually reads fastest).
 
 ## Workflow
-1. **Plan the figure set.** Read the draft; list its major sections; per **Density & placement** pick the
-   concept + archetype for each. One idea per figure.
+1. **Plan the figure set.** Read the draft; list its major sections; per **Density & placement** pick a
+   **hero** (the title concept, for the top) plus the concept + archetype for each section. One idea per figure.
 2. **Write the prompt** = the **style block** + the **archetype block**, filled with the concept's real
    labels (templates: [references/prompt-kit.md](references/prompt-kit.md)). Keep labels short (≤3–4 words)
    — gpt-image-2 garbles long text.
@@ -39,13 +40,14 @@ tokens to the project **`DESIGN.md`**.
    `gpt-image-2 --image $REF` (pass a `samples/` image as the style reference) for the pipeline. Landscape
    ~3:2 in-article; 1:1 or 4:5 if it also runs as a post.
 4. **Run the bar** (below); regenerate on any miss.
-5. **Save + embed.** Write each to `content/03-drafts/<YYYY-MM-DD-slug>/images/<concept>.png` (the piece's
-   own bundle — see `content/AGENTS.md`) and embed inline at its section break: `![alt](images/<concept>.png)`.
-   Scratch/tests → `content/_work/article-images/`.
+5. **Save + embed.** Write each to the piece's own bundle `…/images/<concept>.png` (see `content/AGENTS.md`).
+   Embed the **hero at the very top, above the first line** (`images/hero.png`); embed each section figure at
+   its break: `![alt](images/<concept>.png)`. Scratch/tests → `content/_work/article-images/`.
 
 ## Layout archetypes
 | Archetype | Use for | Shape |
 |---|---|---|
+| **Hero / title card** | the lead image (top of the article) + social thumbnail | the core metaphor as one central doodle + the hand-lettered TITLE with a blue underline; wide (16:9), minimal, lots of space |
 | **Flow / pipeline** | a process, before→after, a path | 2–4 boxes left→right joined by arrows; dash + blue-highlight the pivotal box |
 | **Comparison** | X vs Y, old vs new, tool vs system | vertical split; two headings (blue underline); blue-highlight pill verdict under each |
 | **Cycle / loop** | a compounding/repeating system | 4–6 boxes in a ring, curved arrows, blue numbered circles |

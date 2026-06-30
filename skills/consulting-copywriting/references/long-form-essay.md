@@ -132,7 +132,7 @@ Rules:
 - Only appears after 4,000+ words of analytical writing
 - Uses present tense, second person ("you")
 - 2-3 passages maximum per essay
-- The contrast with the analytical voice is what makes it land
+- The contrast with the analytical voice is what gives it force
 - If you haven't earned it with evidence, it reads as purple prose
 
 ---

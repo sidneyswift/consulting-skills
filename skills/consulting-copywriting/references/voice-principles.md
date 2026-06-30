@@ -47,7 +47,7 @@ Take a stance. State the basis. No hedging into nothing, no overselling into noi
 - Too hedged: "AI might possibly face some challenges in fully replacing workers."
 - Too absolute: "AI will never replace humans. Period."
 
-The tone is: I've thought about this seriously, here's where I landed, here's why.
+The tone is: I've thought about this seriously, here's what I think today, here's why.
 
 Plain uncertainty when genuinely uncertain: "I think," "probably," "my guess is." These are honest. What's banned is performative hedging — qualifying every sentence until the stance disappears.
 
@@ -110,7 +110,7 @@ Examples: "allocation economy," "chart psychosis," "smuggled intelligence," "hum
 
 Mix lengths deliberately. Monotone rhythm — whether all short or all long — makes writing feel robotic.
 
-- Short declarative sentences to land a point: "The paradox remains."
+- Short declarative sentences to make a point stick: "The paradox remains."
 - Medium sentences for evidence and context (the workhorse, ~55% of sentences)
 - Longer sentences for complex reasoning, but only when the complexity is genuine
 

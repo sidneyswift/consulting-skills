@@ -152,6 +152,14 @@ AI pads sentences with low-information intensifiers that simulate sincerity or e
 
 Principle: "actual" adds nothing — there is no fake setup being contrasted. If deleting the word changes nothing, the word was never doing work. Audit every intensifier; keep it only when it draws a real contrast ("the actual invoice, not the estimate").
 
+## "Land" / "landing" (conclusion + resonance slop)
+
+Do not use `land` / `landing` / `landed` / `lands` for arriving at a view or for a line resonating:
+"where I'm landing," "where I landed," "where I've landed," "the point lands," "land the point," "lands
+on a verdict," "the last line lands." Say it plainly: "what I think today," "my current read," "for now
+I'd say," "to make a point stick," "settles on a verdict." `land` is allowed ONLY as the literal noun
+(ground / territory) and in the fixed term "landing page."
+
 ## Abstract-noun summary callbacks
 
 Do not wrap the preceding paragraph into a tidy abstract noun and hand it back to the reader: "the shift," "the move," "the unlock," "the play," "the takeaway," "the pattern," "the lesson."

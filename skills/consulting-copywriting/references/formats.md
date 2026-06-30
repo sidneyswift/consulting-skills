@@ -30,7 +30,7 @@ For middle-length explanatory pieces, read [social-article-style.md](social-arti
 - Confident, never needy. No "just checking in," no chasing, no apologizing for someone's silence.
 - Write for cognitive ease (System 1): short declaratives, lead with their concern, not your product.
 - Take the work off their plate: one low-effort default, not a menu. State the default action ("I'll take X to Mike and loop you") instead of asking permission to ask.
-- A 1:1 note should land under ~90 words. Shorter wins.
+- A 1:1 note should come in under ~90 words. Shorter wins.
 
 ### Cold outreach
 

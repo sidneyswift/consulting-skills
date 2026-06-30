@@ -72,16 +72,16 @@ For each category, answer:
 - What will make it better or worse over time?
 - What failure mode should the reader watch for?
 
-Avoid universal winners. The sample lands on a time-sensitive verdict: APIs are fine for many applications, CLIs are strongest for agents today, MCP has the most agent-native potential if clients and specs mature.
+Avoid universal winners. The sample settles on a time-sensitive verdict: APIs are fine for many applications, CLIs are strongest for agents today, MCP has the most agent-native potential if clients and specs mature.
 
 ### 5. Temporal honesty
 
-Good social articles can say "where I'm landing" instead of pretending the market is settled.
+Good social articles can say where the writer currently stands instead of pretending the market is settled.
 
 Useful phrases:
 
-- "Where I'm landing..."
 - "Today, I think..."
+- "My current read..."
 - "Long term, I expect..."
 - "This is probably controversial..."
 - "The part I keep coming back to..."
@@ -230,14 +230,14 @@ For newsletters or blog-style social articles:
 This format often includes claims about tools, protocols, products, and market direction. Do not add technical facts that are not in the source notes unless you verify them.
 
 - Treat names, specs, product capabilities, dates, and numbers as claims.
-- If the source note is Sid's own working model, keep the posture calibrated: "where I'm landing," "I think," "today."
+- If the source note is Sid's own working model, keep the posture calibrated: "I think," "today," "my current read."
 - If a claim needs external proof, verify it before publishing or write around it as a belief rather than a fact.
 - Do not inflate the sample with invented examples just to make the comparison feel complete.
 
 ## Style rules
 
 - Keep the voice spoken and direct. Slightly rough is fine. Over-polished is wrong for this format.
-- Use first person when the claim is a working model: "where I'm landing," "I think," "I would argue."
+- Use first person when the claim is a working model: "I think," "I would argue," "my current read."
 - Use headers as road signs, not SEO furniture.
 - Use concrete examples inside the argument, not as a separate case-study block.
 - Let some sentences be blunt fragments when they carry the point: "That's it."

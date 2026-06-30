@@ -32,9 +32,10 @@ See `content/AGENTS.md`.)
 
 ## Steps
 0. **Orient + find what's new.** Read the day's `business/ops/nightly-digests/<date>.md`. Gather unused
-   **signals** from `signals/` — `status: new` (plus `evergreen` POVs not yet drafted into a published
-   pillar); skip `used`/`archived`. (`content/_work/LAST_DRAFTED` is just a run-log now; per-signal
-   `status` is the truth.) `git log` for today.
+   **signals** — the **dated `signals/<YYYY-MM-DD>-*.md` files** with `status: new` (plus `evergreen` POVs
+   not yet drafted into a published pillar); skip `used`/`archived` **and the meta files** (`AGENTS.md`,
+   `_template.md`, `_index.md`, `_archive/` are NOT signals). (`content/_work/LAST_DRAFTED` is just a
+   run-log now; per-signal `status` is the truth.) `git log` for today.
 
 1. **Pick ONE signal** — the strongest, most specific unused signal (`status: new`, or an `evergreen` POV
    not yet published) with a real story / POV from an actual source. Dedup vs `content/04-published/` and

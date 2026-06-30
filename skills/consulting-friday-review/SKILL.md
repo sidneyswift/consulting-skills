@@ -6,7 +6,7 @@ description: The weekly content + system review ritual. Use on "run the Friday r
 # Consulting Friday Review
 
 ## Steps
-1. Scan `signals/` for unused signals (`status: new`; target 15–20 candidates).
+1. Scan `signals/` for unused signals — the dated `<YYYY-MM-DD>-*.md` files (`status: new`; skip the meta files `AGENTS.md`/`_template.md`/`_index.md`/`_archive/`; target 15–20 candidates).
 2. Detect repeated questions across the week's calls and `knowledge/` — repeats are the strongest content signal.
 3. Run `consulting-content-extraction` on any un-processed transcripts in `content/01-raw/`.
 4. Run `consulting-research-miner` if the research wiki advanced since `integrations/research/_work/LAST_MINED` — harvest fresh agent/skill/compound-engineering ideas into `signals/` (delta-guarded; no-ops if nothing's new).

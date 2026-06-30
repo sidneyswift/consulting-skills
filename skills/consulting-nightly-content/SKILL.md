@@ -1,12 +1,12 @@
 ---
 name: consulting-nightly-content
-description: Phase 3 of the nightly pipeline — the content engine. After capture + janitor, pick a topic from the day's new insights and produce a copy-edited pillar ARTICLE, a copy-edited LinkedIn post derived from it, and an on-brand thumbnail — all staged for review, never published. Uses consulting-copywriting for prose, consulting-copy-editor after each draft, and consulting-article-illustrator for the hero thumbnail + inline diagrams. Article-first: one pillar -> many platform posts. Use on "run the nightly content", "draft today's article", or as the nightly content ritual.
+description: Phase 3 of the nightly pipeline — the content engine. After capture + janitor, pick a topic from the day's new insights and produce a copy-edited pillar ARTICLE, a copy-edited LinkedIn post derived from it, and an on-brand image set — all staged for review, never published. Uses consulting-copywriting for prose, consulting-copy-editor after each draft, and consulting-article-illustrator for the hero image + inline diagrams. Article-first: one pillar -> many platform posts. Use on "run the nightly content", "draft today's article", or as the nightly content ritual.
 ---
 
 # Consulting Nightly Content (article-first flywheel engine)
 
 Capture turns calls into insights; this turns the day's strongest insight into a **pillar article**, edits
-that article, derives and edits a **LinkedIn post**, then makes an **on-brand thumbnail**. Article-first,
+that article, derives and edits a **LinkedIn post**, then makes an **on-brand image set (hero + figures)**. Article-first,
 because one good article becomes many platform posts later (LinkedIn, X, newsletter) — write the pillar
 once, atomize forever.
 
@@ -17,8 +17,7 @@ The engine drafts; **Sid publishes.** Quality over cadence.
 content/03-drafts/<YYYY-MM-DD>-<topic-slug>/
   <article-slug>.md    the pillar article (hero + figures embedded inline)
   linkedinpost.md      the LinkedIn post derived from / promoting the article
-  thumbnail.png        the hand-drawn hero (also the social/OG preview)
-  images/              the inline section figures (~1 per section)
+  images/              image1.png = hero (also the social/OG preview), then image2.png… (~1 per section)
 ```
 (A pillar is the *folder* shape of a draft; a one-off post/graphic is a single file in `content/03-drafts/`.
 See `content/AGENTS.md`.)
@@ -58,9 +57,9 @@ See `content/AGENTS.md`.)
 
 6. **Illustrate the edited article.** Read **`consulting-article-illustrator`** (the house article-image skill;
    brand taste via **`consulting-tasteful-design`** / `DESIGN.md`). Per its density rule, produce the
-   **hero thumbnail** — saved as the bundle `thumbnail.png` and embedded above the first line — **plus
-   ~1 inline figure per major section**, saved in `images/` and embedded at each section break (pick the
-   archetype that fits each concept). Hand-drawn whiteboard palette; generate with **gpt-image-2** (this
+   **hero** — saved as `images/image1.png` and embedded above the first line — **plus ~1 inline figure per
+   major section**, saved as `images/image2.png`, `image3.png`, … (reading order) and embedded at each
+   section break (pick the archetype that fits each concept). Hand-drawn whiteboard palette; generate with **gpt-image-2** (this
    run is a cloud worker with the Higgsfield connector → use the illustrator's Higgsfield `gpt-image-2`
    route). Run the illustrator's bar on each image. If image generation isn't available, stage the
    article without figures and flag it in the report — don't block the article.
@@ -73,4 +72,4 @@ See `content/AGENTS.md`.)
 - **Article-first is the leverage.** The pillar gets atomized later into X threads, a newsletter, more LinkedIn
   angles. Spend the effort on the pillar.
 - **Mine, don't manufacture.** Nothing worth a pillar → say nothing. The flywheel rewards signal, not cadence.
-- Scored by `evals/content/score_run.py`: completeness (edited article + edited post + thumbnail), grounding, voice, non-dup.
+- Scored by `evals/content/score_run.py`: completeness (edited article + edited post + images), grounding, voice, non-dup.

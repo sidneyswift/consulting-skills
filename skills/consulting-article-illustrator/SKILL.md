@@ -1,6 +1,6 @@
 ---
 name: consulting-article-illustrator
-description: Generate hand-drawn "whiteboard / excalidraw"-style explainer images for articles and posts — the doodle-marker diagrams that sit inside a pillar to explain a concept (a flow, a comparison, a loop, a stack, a hub-and-spoke, a numbered framework). Made with gpt-image-2 in the brand palette: light-grey background, black marker line work + hand-lettering, a single blue accent. Plans a figure set — a hero thumbnail at the top (above the first line; doubles as the social/OG preview) plus ~1 diagram per section — and embeds them inline. Use when asked to "make an article image / diagram / explainer / infographic / hero / thumbnail", a "hand-drawn / sketch / whiteboard" visual, or to illustrate a blog post / LinkedIn article / pillar. NOT for clean HTML social graphics (use consulting-graphics) or anything animated (use consulting-hyperframes-video).
+description: Generate hand-drawn "whiteboard / excalidraw"-style explainer images for articles and posts — the doodle-marker diagrams that sit inside a pillar to explain a concept (a flow, a comparison, a loop, a stack, a hub-and-spoke, a numbered framework). Made with gpt-image-2 in the brand palette: light-grey background, black marker line work + hand-lettering, a single blue accent. Plans a figure set — a hero image at the top (above the first line; doubles as the social/OG preview) plus ~1 diagram per section — and embeds them inline. Use when asked to "make an article image / diagram / explainer / infographic / hero / thumbnail", a "hand-drawn / sketch / whiteboard" visual, or to illustrate a blog post / LinkedIn article / pillar. NOT for clean HTML social graphics (use consulting-graphics) or anything animated (use consulting-hyperframes-video).
 ---
 
 # Consulting Article Illustrator
@@ -25,7 +25,8 @@ mascot, lots of whitespace, flat — no photoreal, no gradients. Match the bundl
 tokens to the project **`DESIGN.md`**.
 
 ## Density & placement
-- **Open with a hero.** Every article gets a **hero thumbnail** — the title concept as **one bold metaphor (a cover, not a diagram)** — at the **very top, above the first line**. Save it as the bundle `thumbnail.png` (the pillar convention); it doubles as the social/OG preview.
+- **Open with a hero.** Every article gets a **hero** — the title concept as **one bold metaphor (a cover, not a diagram)** — at the **very top, above the first line**. It's the bundle's first image, `images/image1.png`, and it doubles as the social/OG preview.
+- **Name by reading order.** Every image lives in the bundle's `images/` folder, named `image1.png`, `image2.png`, … in the order it appears (hero = `image1`). The *meaning* lives in each embed's alt text, not the filename.
 - **Then ~1 diagram per major section/concept.** A 4-section pillar → a hero + ~4 section figures. Cap section figures at **~4–6**.
 - **Place each section figure at its break**, right after that section's point lands.
 - **Lead with the strongest archetype** (a comparison or a flow usually reads fastest).
@@ -42,14 +43,16 @@ tokens to the project **`DESIGN.md`**.
    can't run there) — don't substitute another model. Landscape ~3:2 in-article; 1:1 or 4:5 if it also
    runs as a post.
 4. **Run the bar** (below); regenerate on any miss.
-5. **Save + embed.** Write each to the piece's own bundle `…/images/<concept>.png` (see `content/AGENTS.md`).
-   Embed the **hero at the very top, above the first line** (the bundle `thumbnail.png`); embed each section
-   figure at its break: `![alt](images/<concept>.png)`. Scratch/tests → `content/_work/article-images/`.
+5. **Save + embed.** Save every image in the bundle's `images/` folder, numbered in **reading order**: the
+   **hero** is `images/image1.png` (embed it at the **very top, above the first line**), then each section
+   figure is `images/image2.png`, `image3.png`, … embedded at its break with descriptive alt text that
+   carries the meaning: `![what the figure shows](images/image2.png)` (see `content/AGENTS.md`).
+   Scratch/tests → `content/_work/article-images/`.
 
 ## Layout archetypes
 | Archetype | Use for | Shape |
 |---|---|---|
-| **Hero / title card** | the lead image (top of the article) + social thumbnail | a COVER, not a diagram: ONE central doodle (the core metaphor) + the hand-lettered TITLE with a blue underline, nothing else — no steps, lists, panels, or flow arrows. Wide 16:9, poster-like, mostly empty space |
+| **Hero / title card** | the lead image (top of the article) + social preview | a COVER, not a diagram: ONE central doodle (the core metaphor) + the hand-lettered TITLE with a blue underline, nothing else — no steps, lists, panels, or flow arrows. Wide 16:9, poster-like, mostly empty space |
 | **Flow / pipeline** | a process, before→after, a path | 2–4 boxes left→right joined by arrows; dash + blue-highlight the pivotal box |
 | **Comparison** | X vs Y, old vs new, tool vs system | vertical split; two headings (blue underline); blue-highlight pill verdict under each |
 | **Cycle / loop** | a compounding/repeating system | 4–6 boxes in a ring, curved arrows, blue numbered circles |
@@ -73,8 +76,8 @@ Fail any box → don't ship it; fix the prompt and regenerate.
 ## Nightly pipeline hook
 `consulting-nightly-content` can **auto-illustrate** a staged pillar: generate every image via the
 **Higgsfield MCP** connector with model **`gpt-image-2`** (never the in-session `GenerateImage` tool or a
-fallback model), apply **Density & placement**, save into the draft's `images/` (+ `thumbnail.png`), embed
-inline, and leave it staged for review (never auto-publish). If the MCP or `gpt-image-2` is unavailable,
+fallback model), apply **Density & placement**, save into the draft's `images/` as `image1.png` (hero) …
+`imageN.png`, embed inline, and leave it staged for review (never auto-publish). If the MCP or `gpt-image-2` is unavailable,
 stage without figures and flag — don't swap models.
 
 > **Taste authority:** `consulting-tasteful-design` + `DESIGN.md` govern brand look across every medium;

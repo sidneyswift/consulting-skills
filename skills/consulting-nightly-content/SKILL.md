@@ -1,12 +1,12 @@
 ---
 name: consulting-nightly-content
-description: Phase 3 of the nightly pipeline — the content engine. After capture + janitor, pick a topic from the day's new insights and produce a copy-edited pillar ARTICLE, a copy-edited LinkedIn post derived from it, and an on-brand image set — all staged for review, never published. Uses consulting-copywriting for prose, consulting-copy-editor after each draft, and consulting-article-illustrator for the hero image + inline diagrams. Article-first: one pillar -> many platform posts. Use on "run the nightly content", "draft today's article", or as the nightly content ritual.
+description: Phase 3 of the nightly pipeline — the content engine. After capture + janitor, pick a topic from the day's new insights and produce a copy-edited pillar ARTICLE, a copy-edited LinkedIn post derived from it, and an on-brand image set — all staged for review, never published. Uses consulting-copywriting for prose, consulting-copy-reviewer (the customer's eyes) then consulting-copy-editor on the article, and consulting-article-illustrator for the hero image + inline diagrams. Article-first: one pillar -> many platform posts. Use on "run the nightly content", "draft today's article", or as the nightly content ritual.
 ---
 
 # Consulting Nightly Content (article-first flywheel engine)
 
-Capture turns calls into insights; this turns the day's strongest insight into a **pillar article**, edits
-that article, derives and edits a **LinkedIn post**, then makes an **on-brand image set (hero + figures)**. Article-first,
+Capture turns calls into insights; this turns the day's strongest insight into a **pillar article**, runs it
+past the customer's eyes and the editor's, derives and edits a **LinkedIn post**, then makes an **on-brand image set (hero + figures)**. Article-first,
 because one good article becomes many platform posts later (LinkedIn, X, newsletter) — write the pillar
 once, atomize forever.
 
@@ -27,7 +27,7 @@ See `content/AGENTS.md`.)
 2. **Grounded, not fabricated.** Every claim traces to a real captured insight/transcript — carry the
    citation. Never invent a client name, number, or result; confirm before naming a client, or write generically.
 3. **Voice = `consulting-copywriting`** (no exceptions): no em-dashes, anti-slop list, specific, human. Read it.
-4. **Edit gate = `consulting-copy-editor`.** Edit the article before deriving the post; edit the post before illustration + scoring.
+4. **Two gates on the article: reader, then editor.** Run `consulting-copy-reviewer` (the customer's eyes) and rewrite from its notes, *then* `consulting-copy-editor`, before deriving the post; edit the post before illustration + scoring.
 5. **Quality over volume.** One strong article a night (occasionally a second). A thin day → one-line report, no article.
 
 ## Steps
@@ -49,18 +49,24 @@ See `content/AGENTS.md`.)
    verdict. Aim 800–1,400 words. Save as `<article-slug>.md` with frontmatter: `title`, `source`
    (insight/transcript path), `audience`, `status: draft`.
 
-3. **Edit the ARTICLE.** Read **`consulting-copy-editor`** and run its editorial pass on `<article-slug>.md`.
-   Implement accepted edits in place. Defer score/report/commit to step 7 because this parent workflow
-   scores the full bundle once. Use the edited article as the source for every downstream step.
+3. **Reader review (customer POV) + rewrite.** Read **`consulting-copy-reviewer`** and run it on
+   `<article-slug>.md`: a fresh-context subagent role-plays Sid's ICP customer and returns reader-reaction
+   notes (unclear jargon, where they tune out, trust, whether they'd share). Rewrite the article from the
+   accepted notes — clearer, less technical, worth the reader's time, every fact intact. This is the
+   **customer** gate; the editor gate is next.
 
-4. **Derive the LinkedIn POST from the edited article.** Read `consulting-copywriting` §social. A standalone
+4. **Edit the ARTICLE.** Read **`consulting-copy-editor`** and run its editorial pass on the rewritten
+   `<article-slug>.md`. Implement accepted edits in place. Defer score/report/commit to step 8 because this
+   parent workflow scores the full bundle once. Use the edited article as the source for every downstream step.
+
+5. **Derive the LinkedIn POST from the edited article.** Read `consulting-copywriting` §social. A standalone
    hook that teases/promotes the article (don't just paste the intro). Save as `linkedinpost.md` (frontmatter:
    `source` = the article path, `hook`, `status: draft`).
 
-5. **Edit the LinkedIn POST.** Run **`consulting-copy-editor`** on `linkedinpost.md`. Implement accepted edits
-   in place before illustration and scoring. Defer score/report/commit to step 7.
+6. **Edit the LinkedIn POST.** Run **`consulting-copy-editor`** on `linkedinpost.md`. Implement accepted edits
+   in place before illustration and scoring. Defer score/report/commit to step 8.
 
-6. **Illustrate the edited article.** Read **`consulting-article-illustrator`** (the house article-image skill;
+7. **Illustrate the edited article.** Read **`consulting-article-illustrator`** (the house article-image skill;
    brand taste via **`consulting-tasteful-design`** / `DESIGN.md`). Per its density rule, produce the
    **hero** — saved as `images/image1.png` and embedded above the first line — **plus ~1 inline figure per
    major section**, saved as `images/image2.png`, `image3.png`, … (reading order) and embedded at each
@@ -69,10 +75,10 @@ See `content/AGENTS.md`.)
    route). Run the illustrator's bar on each image. If image generation isn't available, stage the
    article without figures and flag it in the report — don't block the article.
 
-7. **Mark the signal + report + score + commit.** Set the consumed signal's `status: used` + `used_by:`
+8. **Mark the signal + report + score + commit.** Set the consumed signal's `status: used` + `used_by:`
    the bundle path, and regenerate `signals/_index.md` (an `evergreen` insight stays evergreen — append
    the bundle to its `used_by` history instead). Write `business/ops/content-reports/<date>.md` (**Article ·
-   Article edit · Post · Post edit · Hero + figures · Skipped (why) · Needs Sid**), run
+   Reader review · Article edit · Post · Post edit · Hero + figures · Skipped (why) · Needs Sid**), run
    `python evals/content/score_run.py` (composite + flags at top), commit each draft why-first, stamp
    `content/_work/LAST_DRAFTED`, then stop.
 

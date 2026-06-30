@@ -53,9 +53,10 @@ Autopilot means "no human in the loop," not "skip the rails." These come straigh
    - **Place** the raw file in its home (`clients/<client>/meetings/` or `…/slack/`,
      `pipeline/<stage>/<deal>/`, `knowledge/product/` for internal product DMs, or `content/01-raw/`),
      dated `YYYY-MM-DD`.
-   - **Extract** → `consulting-content-extraction` (insights → `knowledge/insights/`, candidates →
-     `content/02-ideas/`). Discovery call → also `consulting-discovery-analysis`; qualified → chain
-     `consulting-proposal-drafting`.
+   - **Extract** → `consulting-content-extraction` — write **atomic signals** to `signals/` (one file per
+     item, each with a traversable `source` + `status`; see `signals/AGENTS.md`). This is the owned
+     write-step for the reservoir. Discovery call → also `consulting-discovery-analysis`; qualified →
+     chain `consulting-proposal-drafting`.
    - **Reconcile** the related folder: read its `AGENTS.md`, fix drift against the new info + live Attio.
    - **Update** all affected files: the deal/client `AGENTS.md` dashboard (status, stakes, $, next
      action), `pipeline/_board.md`, `business/metrics/dashboard.html`. New stakeholders, decisions, dates.
@@ -77,7 +78,7 @@ Autopilot means "no human in the loop," not "skip the rails." These come straigh
    - **Ingested** — what came in (N meetings, N threads, N engagements), each one line **with a link to
      its raw artifact** (transcript / email-archive / slack file). The digest is an *index into the raw*,
      never a substitute — every claim below must trace to one of these captured primary sources.
-   - **Changed** — dashboards/board/CRM updates made, stage moves, new content ideas/insights.
+   - **Changed** — dashboards/board/CRM updates made, stage moves, new signals written to `signals/`.
    - **Needs you** — the queue the rails parked: drafts awaiting send, `[UNVERIFIED]` figures to
      confirm, ambiguous stage moves, missing keys/sources. This is the section the user actually acts on.
    - **Commits** — the `git log --oneline` for the run, so the digest ties back to the memory.

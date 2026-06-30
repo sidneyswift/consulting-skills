@@ -5,15 +5,15 @@ description: Fan one source insight into several scheduled, segment-routed email
 
 # Consulting Email Atomizer
 
-Turn one source (a `knowledge/insights/` entry, a fresh call, or an industry event) into several
-email touches. Second consumer of the insight reservoir (LinkedIn is the first).
+Turn one source (a `signals/` entry, a fresh call, or an industry event) into several
+email touches. Second consumer of the signal reservoir (LinkedIn is the first).
 Full design: `docs/plans/2026-06-19-email-engine-design.md` · templates: `library/email-templates/` (06-11) ·
 staging + frontmatter + routing: `email/AGENTS.md`.
 **Voice + gate (always):** write in `consulting-copywriting` voice, then run every draft through the `consulting-outbound-email` skill (read context, route to the right person, reader-POV check, names verified) before staging.
 
 ## Steps
-1. **Take one source.** Prefer an existing `knowledge/insights/` file. If it is a raw call, run
-   `consulting-content-extraction` first so the insight exists. Record its path. It becomes `source:`.
+1. **Take one source.** Prefer an existing `signals/` entry. If it is a raw call, run
+   `consulting-content-extraction` first so the signal exists. Record its path. It becomes `source:`.
    *No source, no email.*
 2. **Atomize.** Decide which of the 6 formats this source can *honestly* yield (most yield 2-4, not
    all 6). A weak fit is a skip. Don't pad.

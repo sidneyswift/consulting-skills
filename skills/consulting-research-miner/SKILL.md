@@ -1,6 +1,6 @@
 ---
 name: consulting-research-miner
-description: Mine the external AI & Agents research wiki for content. Use on "harvest research", "content ideas from research", "mine the research wiki", on the Friday cadence, or whenever the research wiki (../research) has new material. Turns its cited analysis into content/02-ideas/ cards that show the practice's agent/skill expertise — read-only; never copies wiki pages in.
+description: Mine the external AI & Agents research wiki for content. Use on "harvest research", "content ideas from research", "mine the research wiki", on the Friday cadence, or whenever the research wiki (../research) has new material. Turns its cited analysis into atomic signals (signals/) that show the practice's agent/skill expertise — read-only; never copies wiki pages in.
 ---
 
 # Consulting Research Miner
@@ -24,15 +24,12 @@ wiki's `log.md` has advanced since `integrations/research/_work/LAST_MINED`.
 4. **Translate analysis → angles.** Turn each portable idea into a first-person content angle that
    shows *your* expertise (teach it / argue it / show the receipts), not a third-person book report.
    Keep the strongest ~5–10 across the delta — quality over a dump (the weekly target is 15–20 ideas).
-5. **Write the card file** at `content/02-ideas/YYYY-MM-DD-research-<topic>-ideas.md`, in the house format
-   (match any existing `content/02-ideas/*-call-ideas.md`):
-   - `# Content candidates — Research wiki: <topic> (YYYY-MM-DD)`
-   - a `Source:` line naming the wiki pages mined;
-   - `## LinkedIn post candidates` — numbered; each a **bold hook**, a `Hook:` body, an
-     `*(Intent: <audience / TAM>)*` tag, **and the `[[wiki page]]` citation** it came from;
-   - `## Blog / long-form topics` — bullets, each with its `[[citation]]`.
-6. **Promote durable POVs.** If a page yields a reusable explanation/framework (not just a hook), also
-   drop it into `knowledge/insights/` with its citation.
+5. **Write atomic signals** to `signals/` — one `type: content-idea` file per kept idea
+   (`YYYY-MM-DD-<slug>.md`; schema in `signals/AGENTS.md`), each with: `hook`, `intent` (audience / TAM),
+   `formats` (`[linkedin]` or `[article]`), `status: new`, and `source: {type: research, ref: "[[wiki
+   page]]"}` so it traverses back to the page it came from.
+6. **Promote durable POVs.** If a page yields a reusable explanation/framework (not just a hook), write it
+   as a `type: insight` signal (`status: evergreen`) in `signals/`, its `[[wiki page]]` as `source`.
 7. **Stamp + report.** Update `_work/LAST_MINED` to the newest harvested `log.md` date. Report: pages
    mined · ideas written · POVs promoted · any **gaps** (topics you expected but the wiki lacked).
 

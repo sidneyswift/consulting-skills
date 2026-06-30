@@ -31,12 +31,16 @@ See `content/AGENTS.md`.)
 5. **Quality over volume.** One strong article a night (occasionally a second). A thin day → one-line report, no article.
 
 ## Steps
-0. **Orient + find what's new.** Read the day's `business/ops/nightly-digests/<date>.md`. Gather insights
-   newer than `content/_work/LAST_DRAFTED` (`knowledge/insights/`, `content/02-ideas/`). `git log` for today.
+0. **Orient + find what's new.** Read the day's `business/ops/nightly-digests/<date>.md`. Gather unused
+   **signals** from `signals/` — `status: new` (plus `evergreen` POVs not yet drafted into a published
+   pillar); skip `used`/`archived`. (`content/_work/LAST_DRAFTED` is just a run-log now; per-signal
+   `status` is the truth.) `git log` for today.
 
-1. **Pick ONE topic** — the strongest, most specific fresh insight with a real story / POV from an actual
-   call. Dedup vs `content/04-published/` and existing `content/03-drafts/` (never rewrite a published pillar).
-   Slugify the topic and make the bundle folder `content/03-drafts/<YYYY-MM-DD>-<topic-slug>/` (date-first, so `drafts/` sorts chronologically).
+1. **Pick ONE signal** — the strongest, most specific unused signal (`status: new`, or an `evergreen` POV
+   not yet published) with a real story / POV from an actual source. Dedup vs `content/04-published/` and
+   existing `content/03-drafts/` (never rewrite a published pillar). Carry its `source` so the draft stays
+   grounded. Slugify the topic and make the bundle folder `content/03-drafts/<YYYY-MM-DD>-<topic-slug>/`
+   (date-first, so `drafts/` sorts chronologically).
 
 2. **Write the ARTICLE** (the pillar). Read **`consulting-copywriting`** first: voice-principles,
    anti-slop, formats §blog/articles, and **`references/social-article-style.md`**. Use the social-article
@@ -64,9 +68,12 @@ See `content/AGENTS.md`.)
    route). Run the illustrator's bar on each image. If image generation isn't available, stage the
    article without figures and flag it in the report — don't block the article.
 
-7. **Report + score + commit.** Write `business/ops/content-reports/<date>.md` (**Article · Article edit ·
-   Post · Post edit · Hero + figures · Skipped (why) · Needs Sid**), run `python evals/content/score_run.py`
-   (composite + flags at top), commit each draft why-first, stamp `content/_work/LAST_DRAFTED`, then stop.
+7. **Mark the signal + report + score + commit.** Set the consumed signal's `status: used` + `used_by:`
+   the bundle path, and regenerate `signals/_index.md` (an `evergreen` insight stays evergreen — append
+   the bundle to its `used_by` history instead). Write `business/ops/content-reports/<date>.md` (**Article ·
+   Article edit · Post · Post edit · Hero + figures · Skipped (why) · Needs Sid**), run
+   `python evals/content/score_run.py` (composite + flags at top), commit each draft why-first, stamp
+   `content/_work/LAST_DRAFTED`, then stop.
 
 ## Notes
 - **Article-first is the leverage.** The pillar gets atomized later into X threads, a newsletter, more LinkedIn

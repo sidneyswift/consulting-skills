@@ -19,8 +19,11 @@ Automatically after any new transcript is saved (content/01-raw/ or clients/{cli
    - Questions that revealed deep insight
    - Moments that reframed the client's thinking
 3. Format each as a candidate LinkedIn post or blog topic.
-4. Deposit results:
-   - Reusable explanations → `knowledge/insights/`
-   - Post/blog candidates → `content/02-ideas/`
-   - Recurring question already answered before → `knowledge/faqs/`
+4. Deposit results as **atomic signals** in `signals/` — one file per item, each with frontmatter (schema
+   + lifecycle in `signals/AGENTS.md`): a **traversable `source`** (the transcript path + line/quote you
+   pulled it from), `type`, `hook`, `intent`, `formats`, `status: new`. This is the owned write-step for
+   the reservoir:
+   - Reusable explanation / durable POV → a `type: insight` signal (`status: evergreen`).
+   - Post/blog candidate → a `type: content-idea` signal (`status: new`).
+   - Recurring question already answered before → `knowledge/faqs/` (reference knowledge, not a signal).
 5. If the same topic now appears 2+ times, flag it as a strong content piece.

@@ -1,12 +1,12 @@
 ---
 name: consulting-content-drafter
-description: Turn an idea or insight into a publish-ready draft. Use on "draft a post/blog about X", "write this up", or when promoting an item from content/02-ideas/ or knowledge/insights/.
+description: Turn an idea or insight into a publish-ready draft. Use on "draft a post/blog about X", "write this up", or when promoting a signal from signals/.
 ---
 
 # Consulting Content Drafter
 
 ## Steps
-1. Take the idea/insight (often from `content/02-ideas/` or `knowledge/insights/`).
+1. Take the signal (from `signals/`) — read its `source`/`related` and traverse to the raw for context.
 2. **Ground research-derived drafts (pull the wiki).** If the idea cites `[[wiki pages]]` (it came
    from `consulting-research-miner`) or the topic is agent/skill/AI-engineering-shaped, follow
    `integrations/research/AGENTS.md` to read the relevant *whole* wiki pages (incl. `## What we'd

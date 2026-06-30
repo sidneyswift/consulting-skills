@@ -8,7 +8,7 @@ description: Turn a consulting insight or content draft into a published or sche
 Ship content from the flywheel to LinkedIn. The off-ramp of `content/` → distribution.
 
 ## Steps
-1. **Pick the source.** A draft in `content/03-drafts/`, an insight in `knowledge/insights/`, or text
+1. **Pick the source.** A draft in `content/03-drafts/`, a signal in `signals/`, or text
    the user gives. If it's an insight (not yet post-shaped), run `consulting-content-drafter` first.
 2. **Shape for LinkedIn.** Hook in line 1, short lines, one idea, soft CTA. Keep the practice's
    positioning (see `positioning/`). No hashtag spam.

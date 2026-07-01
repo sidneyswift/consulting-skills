@@ -14,19 +14,20 @@ turns those signals into the feature-announcement formats Sid sent by hand to Re
 Same **idea-bundle shape** and same **approval queue** as Engine A — a product update is just a bundle
 whose `source` is a PR/release instead of a call.
 
-> **Status:** 🟡 scaffolded (logic here), **not deployed**. It runs on demand today. It earns a
-> `routines/` run file + a `SPEC.md` block (a 4th nightly lane) once **decision B1** is locked. See
-> **Open decisions** below and the design: `docs/plans/2026-06-30-demand-engine-restructure-spec.md` §"Engine B".
+> **Status:** 🟡 logic scaffolded; **source connector ✅ built** (`integrations/github/_work/pull_prs.py`
+> pulls merged PRs tokenless). **Decision B1 is resolved** — watch the **public** `recoupable` org, no token
+> needed. Still on demand until filter→fan is proven end-to-end and a cadence is chosen; then it earns a
+> `routines/` run file + `SPEC.md` block (a 4th nightly lane). Design: `docs/plans/2026-06-30-demand-engine-restructure-spec.md` §"Engine B".
 
-## Prerequisite — the source connector
-Reads merged PRs from the **Recoup product repo(s)** via the **GitHub MCP** (`plugin-github-github`),
-pulled into the read-only `integrations/github/` (GitHub owns truth; the repo keeps only the distilled
-"what shipped" + a `LAST_SYNCED`). **Watches the product repo, not this consulting-os repo.** See
-`integrations/github/AGENTS.md`. `⟡ DECISION B1: which org/repos + the cloud-worker auth path.`
+## Prerequisite — the source connector (built)
+Reads merged PRs from the **public `recoupable` org** via `integrations/github/_work/pull_prs.py`
+(GitHub Search API, **unauthenticated — no token**; optional read-only `GITHUB_TOKEN` only for rate-limit
+headroom). GitHub owns truth; the repo keeps only the distilled "what shipped" + a `LAST_SYNCED`.
+**Watches the product org, not this consulting-os repo.** See `integrations/github/AGENTS.md` (B1 resolved).
 
 ## The flow
 ```text
-pull merged PRs since integrations/github/_work/LAST_SYNCED   (GitHub MCP)
+pull merged PRs since integrations/github/_work/LAST_SYNCED   (python3 integrations/github/_work/pull_prs.py — tokenless)
   → FILTER to user-facing changes    (drop refactors / chores / deps / tests / infra / internal-only)
   → CLUSTER related PRs into ONE feature   (5 PRs building one capability = one announcement, not five)
   → JUDGE "shippable to users"       (is it live / flag-on? does it change what a user can DO? tie to release notes/tags)
@@ -90,18 +91,20 @@ content/03-drafts/<YYYY-MM-DD>-<feature-slug>/
 4. **Voice = `consulting-copywriting`**; edit gates before staging.
 5. **Watches the product repo, not consulting-os.**
 
-## Open decisions (gate deployment)
-- **B1** — which Recoup org/repo(s) to watch + the auth path for an **unattended cloud worker** (a
-  cloud worker can't browser-auth; needs a token/GitHub App). **This blocks the 4th nightly lane.**
-- **B2** — the user-facing filter signal (a `user-facing` PR label vs. title/path heuristics vs. release tags).
-- **B3** — feature-announcement as atomizer format #12 vs. Engine B owns it directly.
+## Open decisions
+- **B1 — ✅ RESOLVED (2026-06-30):** watch the **public `recoupable` org**, read **tokenless** via
+  `pull_prs.py`. No PAT/App needed (optional read-only token only for rate-limit headroom).
+- **B2** — the user-facing filter signal. Grounded default from the real PR stream: **conventional-commit
+  prefix** — keep `feat(...)`; drop `chore`/`test`/`ci`/`build`/`refactor`/`docs` + bare "Test" PRs; treat
+  `fix:` as user-facing only if it names a user-visible symptom. Confirm, or add a `user-facing` PR label.
+- **B3** — feature-announcement as email-atomizer format #12 vs. Engine B owns it directly.
 
-## New pieces (build order once B1 is locked)
-1. `integrations/github/` — the merged-PR pull via the GitHub MCP + `LAST_SYNCED` (scaffolded).
-2. This skill (scaffolded).
-3. A `routines/consulting-product-engine.md` run file + a `SPEC.md` block — its own nightly lane
-   (different source/cadence/connectors than Engine A).
-4. Promote the feature-announcement swipe file → a real reusable format (in progress).
+## New pieces (build order)
+1. `integrations/github/` — the merged-PR pull (`pull_prs.py`) + `LAST_SYNCED`. **✅ built + verified.**
+2. This skill. **✅ scaffolded.**
+3. Promote the feature-announcement swipe file → a reusable format. **✅ done.**
+4. **Next:** prove filter→cluster→cite→fan on real PRs (one bundle), decide B2/B3, then add a
+   `routines/consulting-product-engine.md` run file + a `SPEC.md` block (its own nightly lane).
 
 ## Connection to `products/` (distinct, adjacent)
 `products/` decides *what to build* (demand → score → ship); Engine B announces *what shipped*. They

@@ -1,6 +1,6 @@
 ---
 name: consulting-nightly-content
-description: Phase 3 of the nightly pipeline — the content engine. After capture + janitor, pick a topic from the day's new insights and produce a copy-edited pillar ARTICLE, a copy-edited LinkedIn post derived from it, and an on-brand image set — all staged for review, never published. Uses consulting-copywriting for prose, consulting-copy-reviewer (the customer's eyes) then consulting-copy-editor on the article, and consulting-article-illustrator for the hero image + inline diagrams. Article-first: one pillar -> many platform posts. Use on "run the nightly content", "draft today's article", or as the nightly content ritual.
+description: Phase 3 of the nightly pipeline — the demand engine's insight lane (Engine A, article-first). After capture + janitor, pick a signal from the day's reservoir and produce a copy-edited pillar ARTICLE, a copy-edited LinkedIn post derived from it, and an on-brand image set — staged as one role-named idea bundle (article.md + linkedin.md + meta.yml + images/) for review, never published. Uses consulting-copywriting for prose, consulting-copy-reviewer (the customer's eyes) then consulting-copy-editor on the article, and consulting-article-illustrator for the hero image + inline diagrams. Article-first: one pillar -> many platform posts. Use on "run the nightly content", "draft today's article", or as the nightly content ritual.
 ---
 
 # Consulting Nightly Content (article-first flywheel engine)
@@ -12,13 +12,16 @@ once, atomize forever.
 
 The engine drafts; **Sid publishes.** Quality over cadence.
 
-## Output — one pillar bundle (slug folder) in drafts/
+## Output — one idea bundle (slug folder) in drafts/
 ```
-content/03-drafts/<YYYY-MM-DD>-<topic-slug>/
-  <article-slug>.md    the pillar article (hero + figures embedded inline)
-  linkedinpost.md      the LinkedIn post derived from / promoting the article
-  images/              image1.png = hero (also the social/OG preview), then image2.png… (~1 per section)
+content/03-drafts/<YYYY-MM-DD>-<topic-slug>/    ← the idea is the unit (date + slug = identity)
+  meta.yml         the bundle manifest / approval state machine (source + per-format status)
+  article.md       the pillar article (hero + figures embedded inline)
+  linkedin.md      the LinkedIn post derived from / promoting the article
+  images/          image1.png = hero (also the social/OG preview), then image2.png… (~1 per section)
 ```
+Children are **role-named** (`article.md`, `linkedin.md`; later `x.md` / `email.md` as the idea warrants) —
+the folder carries the title, so every bundle is structurally identical and the approval queue is uniform.
 (A pillar is the *folder* shape of a draft; a one-off post/graphic is a single file in `content/03-drafts/`.
 See `content/AGENTS.md`.)
 
@@ -46,24 +49,24 @@ See `content/AGENTS.md`.)
 2. **Write the ARTICLE** (the pillar). Read **`consulting-copywriting`** first: voice-principles,
    anti-slop, formats §blog/articles, and **`references/social-article-style.md`**. Use the social-article
    structure by default: thesis first, purpose sentence, thought experiment, fair comparison, pragmatic
-   verdict. Aim 800–1,400 words. Save as `<article-slug>.md` with frontmatter: `title`, `source`
+   verdict. Aim 800–1,400 words. Save as `article.md` with frontmatter: `title`, `source`
    (insight/transcript path), `audience`, `status: draft`.
 
 3. **Reader review (customer POV) + rewrite.** Read **`consulting-copy-reviewer`** and run it on
-   `<article-slug>.md`: a fresh-context subagent role-plays Sid's ICP customer and returns reader-reaction
+   `article.md`: a fresh-context subagent role-plays Sid's ICP customer and returns reader-reaction
    notes (unclear jargon, where they tune out, trust, whether they'd share). Rewrite the article from the
    accepted notes — clearer, less technical, worth the reader's time, every fact intact. This is the
    **customer** gate; the editor gate is next.
 
 4. **Edit the ARTICLE.** Read **`consulting-copy-editor`** and run its editorial pass on the rewritten
-   `<article-slug>.md`. Implement accepted edits in place. Defer score/report/commit to step 8 because this
+   `article.md`. Implement accepted edits in place. Defer score/report/commit to step 8 because this
    parent workflow scores the full bundle once. Use the edited article as the source for every downstream step.
 
 5. **Derive the LinkedIn POST from the edited article.** Read `consulting-copywriting` §social. A standalone
-   hook that teases/promotes the article (don't just paste the intro). Save as `linkedinpost.md` (frontmatter:
+   hook that teases/promotes the article (don't just paste the intro). Save as `linkedin.md` (frontmatter:
    `source` = the article path, `hook`, `status: draft`).
 
-6. **Edit the LinkedIn POST.** Run **`consulting-copy-editor`** on `linkedinpost.md`. Implement accepted edits
+6. **Edit the LinkedIn POST.** Run **`consulting-copy-editor`** on `linkedin.md`. Implement accepted edits
    in place before illustration and scoring. Defer score/report/commit to step 8.
 
 7. **Illustrate the edited article.** Read **`consulting-article-illustrator`** (the house article-image skill;
@@ -75,7 +78,10 @@ See `content/AGENTS.md`.)
    route). Run the illustrator's bar on each image. If image generation isn't available, stage the
    article without figures and flag it in the report — don't block the article.
 
-8. **Mark the signal + report + score + commit.** Set the consumed signal's `status: used` + `used_by:`
+8. **Write the manifest, mark the signal, report, score, commit.** Write the bundle **`meta.yml`** — the
+   approval state machine: `id` (the folder), `title`, `date`, `engine: A`, `source` (the signal path), a
+   `formats:` list (one row per artifact — `article`/`linkedin`, each with `file:` + `status: draft`), and
+   `images:`. This is the row Sid approves per format. Then set the consumed signal's `status: used` + `used_by:`
    the bundle path, and regenerate `signals/_index.md` (an `evergreen` insight stays evergreen — append
    the bundle to its `used_by` history instead). Write `business/ops/content-reports/<date>.md` (**Article ·
    Reader review · Article edit · Post · Post edit · Hero + figures · Skipped (why) · Needs Sid**), run

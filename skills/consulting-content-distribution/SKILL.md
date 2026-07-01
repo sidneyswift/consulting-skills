@@ -48,7 +48,7 @@ One finished article = the **canonical copy**. It travels as:
 - **Animated = MP4, not GIF.** For motion on a post or header, ship a muted MP4 loop (`integrations/linkedin/_work/make_loop.py` → `publish.py --media`) — Postbridge rejects GIF. **Link previews / OG cards stay static PNG** (they never animate). For the future owned-blog hero, use a `<video autoplay loop muted>` (graphics recipe `animated-hero`). Per-surface specs: `knowledge/sops/animated-media-for-posts-and-article-headers.md`.
 
 ## Filing
-- Promo post → the bundle's `linkedinpost.md`.
+- Promo post → the bundle's `linkedin.md`.
 - Email → `email/outbox/<date>-<slug>-article-announce.md` (status: draft).
 - Distribution state + engagement baseline → the bundle's `distribution.md`.
 - Recurring engagement monitoring → a cadence (Friday review) or a dedicated `routines/` worker; the capability is the `integrations/linkedin/_work/` pull scripts + `consulting-linkedin-audience`.

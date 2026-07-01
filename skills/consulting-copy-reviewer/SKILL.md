@@ -1,6 +1,6 @@
 ---
 name: consulting-copy-reviewer
-description: Reader-reaction review of a finished draft, run through a fresh-context subagent that ROLE-PLAYS Sid's ICP customer (a founder / CEO / C-suite exec of a $5M-$500M creative, music, entertainment, CPG, or marketing company, sometimes a larger construction firm). Use BEFORE the copy-editor on any post, article, script, website copy, or email — or on "review this from the customer's eyes", "would my ICP care", "reader reaction", "is this too technical". Dispatches a fresh-eyes subagent that reads AS the customer and returns structured notes: what it means + unclear jargon, line/section reactions, whether it builds trust, emotional impact, where they tune out, and whether they'd share it. The main agent then rewrites from the notes. NOT the craft/slop pass — that is consulting-copy-editor, which runs after.
+description: Reader-reaction review of a finished draft, run through a fresh-context subagent that ROLE-PLAYS Sid's ICP customer (a founder / CEO / C-suite exec of a $5M-$500M creative, music, entertainment, CPG, or marketing company, sometimes a larger construction firm). Use BEFORE the copy-editor on any post, article, script, website copy, or email — or on "review this from the customer's eyes", "would my ICP care", "reader reaction", "is this too technical". Dispatches a fresh-eyes subagent that reads AS the customer top to bottom, thinking aloud line by line (a real first-read reaction, in order), then gives a short verdict — unclear jargon, trust, emotion, where they tune out, and whether they'd share it. The main agent then rewrites from that read. NOT the craft/slop pass — that is consulting-copy-editor, which runs after.
 ---
 
 # Consulting Copy-Reviewer (the customer's eyes)
@@ -66,30 +66,23 @@ writer, not as an editor. Do not rewrite anything; return reactions only.
 
 Read: {DRAFT_PATH}
 
-Go through it section by section and line by line, then step back for the whole. Answer:
+Read it top to bottom, in order, the way this person reads something for the first time. THINK ALOUD as
+you go — do not pre-read the whole thing and summarize; react in the moment, in reading order.
 
-1. Meaning & jargon, section by section: what is this section actually saying, in your own words? Where do
-   you hit a word, phrase, or idea you don't follow or that feels too technical? Quote each one and say
-   what would make it clear for you.
-2. Your reaction, line/section by section: where do you nod, where do you frown, where do you think "so
-   what?", where do you feel talked down to or sold to? Quote the spot.
-3. Trust: does this make you trust the writer more or less, and where exactly? Flag anything that reads as
-   hype, vague authority, or a claim it doesn't back up.
-4. Emotion: how does each part make you feel (curious, bored, anxious, seen, skeptical)? Where do you tune
-   out? How do you feel at the very end?
-5. Do you care? Holistically — does this matter to you? If not, why not? What doesn't make sense or isn't
-   worth your time?
-6. Action: would you share or forward this, or save it? To whom, and why? If not, what would change that?
+Part 1 — The read (in order, no preamble, do NOT skip ahead):
+- Start at the very first line: did it earn the next line, or would you scroll past? Then keep going.
+- For every line or beat you react to, QUOTE it and say your honest thought right then, first person,
+  present tense, in your own voice: "ok, I'm in" / "so what?" / "no idea what [term] means" / "this feels
+  like a pitch" / "I'm skimming now" / "I'd stop reading here."
+- Where a line loses you, say what would get you back — in your words ("I'd get it if…"), not an editor's.
+- Keep going to the end even if you'd normally bail, but mark exactly where you'd have bailed.
 
-Return notes in exactly this shape, no preamble:
-A. Overall (3-5 sentences, in character): do you care, would you keep reading, do you trust this person
-   more after reading, and the single biggest thing that would make you care more.
-B. Section/line notes, highest-impact first. For each: the quoted line/section · your reaction (confused /
-   bored / skeptical / jargon / lost trust / sold-to) · severity (must-fix | consider) · what would make
-   it clearer or make you care.
-C. Trust: builds or erodes, and where.
-D. Attention arc: where you engaged, where you tuned out, how you felt at the end.
-E. Share test: would you forward it? yes/no, to whom, and what would turn a no into a yes.
+Part 2 — Stepping back (a few sentences, still in character):
+- Do you care about this? If not, why not?
+- Do you trust the writer more or less than before you read it — and where did that shift?
+- Would you forward or share it? To whom, and why — or what would turn your "no" into a "yes"?
+- How did you feel at the end?
+- The 1-2 changes that would most make you care.
 ```
 
 ## Notes

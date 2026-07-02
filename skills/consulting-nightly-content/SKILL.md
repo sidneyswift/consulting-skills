@@ -1,6 +1,6 @@
 ---
 name: consulting-nightly-content
-description: Phase 3 of the nightly pipeline — the demand engine's insight lane (Engine A, article-first). After capture + janitor, pick a signal from the day's reservoir and produce a copy-edited pillar ARTICLE, a copy-edited LinkedIn post derived from it, and an on-brand image set — staged as one role-named idea bundle (article.md + linkedin.md + meta.yml + images/) for review, never published. Uses consulting-copywriting for prose, consulting-copy-reviewer (the customer's eyes) then consulting-copy-editor on the article, and consulting-article-illustrator for the hero image + inline diagrams. Article-first: one pillar -> many platform posts. Use on "run the nightly content", "draft today's article", or as the nightly content ritual.
+description: Phase 3 of the nightly pipeline — the demand engine's insight lane (Engine A, article-first). After capture + janitor, pick a signal from the day's reservoir and produce a copy-edited pillar ARTICLE plus a LinkedIn post and a broadcast email derived from it, and an on-brand image set — staged as one role-named idea bundle (article.md + linkedin.md + email.md + images/ + meta.yml) for review, never published. Every text format goes through consulting-copy-reviewer (the reader's eyes) then consulting-copy-editor; consulting-article-illustrator makes the hero + inline diagrams. Article-first: one pillar -> many formats. Use on "run the nightly content", "draft today's article", or as the nightly content ritual.
 ---
 
 # Consulting Nightly Content (article-first flywheel engine)
@@ -15,13 +15,16 @@ The engine drafts; **Sid publishes.** Quality over cadence.
 ## Output — one idea bundle (slug folder) in drafts/
 ```
 content/03-drafts/<YYYY-MM-DD>-<topic-slug>/    ← the idea is the unit (date + slug = identity)
-  meta.yml         the bundle manifest / approval state machine (source + per-format status)
+  meta.yml         the bundle manifest / approval state machine (source + per-format status + gates)
   article.md       the pillar article (hero + figures embedded inline)
-  linkedin.md      the LinkedIn post derived from / promoting the article
+  linkedin.md      the stand-alone LinkedIn post
+  email.md         a single-idea broadcast email to the list (not the weekly newsletter)
   images/          image1.png = hero (also the social/OG preview), then image2.png… (~1 per section)
 ```
-Children are **role-named** (`article.md`, `linkedin.md`; later `x.md` / `email.md` as the idea warrants) —
-the folder carries the title, so every bundle is structurally identical and the approval queue is uniform.
+Children are **role-named** (`article.md`, `linkedin.md`, `email.md`; `x.md` as the idea warrants) — the
+folder carries the title, so every bundle is structurally identical and the approval queue is uniform.
+**Every run produces the full set** (article + linkedin + email + images), each text format gated
+(reviewer then editor). Same shape Engine B (`consulting-product-engine`) produces.
 (A pillar is the *folder* shape of a draft; a one-off post/graphic is a single file in `content/03-drafts/`.
 See `content/AGENTS.md`.)
 
@@ -30,8 +33,9 @@ See `content/AGENTS.md`.)
 2. **Grounded, not fabricated.** Every claim traces to a real captured insight/transcript — carry the
    citation. Never invent a client name, number, or result; confirm before naming a client, or write generically.
 3. **Voice = `consulting-copywriting`** (no exceptions): no em-dashes, anti-slop list, specific, human. Read it.
-4. **Two gates on the article: reader, then editor.** Run `consulting-copy-reviewer` (the customer's eyes) and rewrite from its notes, *then* `consulting-copy-editor`, before deriving the post; edit the post before illustration + scoring.
-5. **Quality over volume.** One strong article a night (occasionally a second). A thin day → one-line report, no article.
+4. **Two gates on EVERY audience-facing format (article, linkedin, email): reader, then editor.** Run `consulting-copy-reviewer` (the right ICP per format) and rewrite from its notes, *then* `consulting-copy-editor`. Reviewer before editor, always. **Scored ≠ gated:** `score_run.py` is the floor; the reader/editor passes are the bar.
+5. **One idea, the full bundle.** Every run produces `article.md` + `linkedin.md` + `email.md` + `images/` + `meta.yml`. The article is the pillar; the post and email derive from the edited article.
+6. **Quality over volume.** One strong pillar a night (occasionally a second). A thin day → one-line report, no bundle.
 
 ## Steps
 0. **Orient + find what's new.** Read the day's `business/ops/nightly-digests/<date>.md`. Gather unused
@@ -62,14 +66,18 @@ See `content/AGENTS.md`.)
    `article.md`. Implement accepted edits in place. Defer score/report/commit to step 8 because this
    parent workflow scores the full bundle once. Use the edited article as the source for every downstream step.
 
-5. **Derive the LinkedIn POST.** Read `consulting-copywriting` §social + **`consulting-linkedin-post-architect`**.
+5. **Derive + gate the LinkedIn POST.** Read `consulting-copywriting` §social + **`consulting-linkedin-post-architect`**.
    Write a **stand-alone** post that delivers complete value on its own (don't just paste the article intro) —
    phone-first formatting, value above the fold. The article link is **optional**: add it only as a bonus after
    an already-complete post, never a forced "read the article" / "link in comments." Save as `linkedin.md`
-   (frontmatter: `source` = the article path, `hook`, `status: draft`).
+   (frontmatter: `source` = the article path, `hook`, `status: draft`). Then gate it: **`consulting-copy-reviewer`**
+   (Sid's operator/builder ICP) → rewrite from accepted notes → **`consulting-copy-editor`**, edits in place.
 
-6. **Edit the LinkedIn POST.** Run **`consulting-copy-editor`** on `linkedin.md`. Implement accepted edits
-   in place before illustration and scoring. Defer score/report/commit to step 8.
+6. **Derive + gate the EMAIL.** From the edited article, write a **single-idea broadcast email** to the list
+   (`consulting-copywriting` + the routing in `email/AGENTS.md`) — a one-idea nurture send, **not** the weekly
+   newsletter. Lead with the reader's takeaway; one clear CTA; it may lead with the bundle hero (`images/image1.png`).
+   Save as `email.md` (frontmatter: `source` = the article path, `subject`, `status: draft`). Then gate it:
+   **`consulting-copy-reviewer`** (Sid's subscriber/prospect ICP) → rewrite → **`consulting-copy-editor`**, edits in place.
 
 7. **Illustrate the edited article.** Read **`consulting-article-illustrator`** (the house article-image skill;
    brand taste via **`consulting-tasteful-design`** / `DESIGN.md`). Per its density rule, produce the
@@ -82,11 +90,12 @@ See `content/AGENTS.md`.)
 
 8. **Write the manifest, mark the signal, report, score, commit.** Write the bundle **`meta.yml`** — the
    approval state machine: `id` (the folder), `title`, `date`, `engine: A`, `source` (the signal path), a
-   `formats:` list (one row per artifact — `article`/`linkedin`, each with `file:` + `status: draft`), and
-   `images:`. This is the row Sid approves per format. Then set the consumed signal's `status: used` + `used_by:`
+   `formats:` list (one row per artifact — `article`/`linkedin`/`email`, each with `file:` + `status: draft`),
+   `images:`, and a `gates:` field recording reviewer+editor ran on each format. This is the row Sid approves
+   per format. Then set the consumed signal's `status: used` + `used_by:`
    the bundle path, and regenerate `signals/_index.md` (an `evergreen` insight stays evergreen — append
    the bundle to its `used_by` history instead). Write `business/ops/content-reports/<date>.md` (**Article ·
-   Reader review · Article edit · Post · Post edit · Hero + figures · Skipped (why) · Needs Sid**), run
+   Article gates · Post · Post gates · Email · Email gates · Hero + figures · Skipped (why) · Needs Sid**), run
    `python evals/content/score_run.py` (composite + flags at top), commit each draft why-first, stamp
    `content/_work/LAST_DRAFTED`, then stop.
 
@@ -94,4 +103,4 @@ See `content/AGENTS.md`.)
 - **Article-first is the leverage.** The pillar gets atomized later into X threads, a newsletter, more LinkedIn
   angles. Spend the effort on the pillar.
 - **Mine, don't manufacture.** Nothing worth a pillar → say nothing. The flywheel rewards signal, not cadence.
-- Scored by `evals/content/score_run.py`: completeness (edited article + edited post + images), grounding, voice, non-dup.
+- Scored by `evals/content/score_run.py`: grounding, voice, non-dup on each format (article + post + email). The scorer is the floor; the reviewer+editor gates are the bar.

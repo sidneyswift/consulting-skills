@@ -1,6 +1,6 @@
 ---
 name: consulting-product-engine
-description: Engine B of the demand engine — turn shipped, user-facing product work (merged PRs / releases) into staged feature-announcement bundles (email + LinkedIn/X post + explainer video), grounded and cited to the PRs, never auto-sent. This is the build->content half of the flywheel (Engine A is calls->content). Use on "turn our shipped PRs into content", "announce what we shipped", "run the product engine", or as the (planned) 4th nightly lane. NOTE: deploying this unattended is blocked on decision B1 (which Recoup repo(s) to watch + a cloud-worker GitHub auth path) — until then, run it on demand.
+description: Engine B of the demand engine — turn shipped, user-facing product work (merged PRs / releases) into a staged idea bundle (article + LinkedIn post + email + image(s) + meta.yml, same shape as Engine A), grounded and cited to the PRs, never auto-sent. This is the build->content half of the flywheel (Engine A is calls->content). Use on "turn our shipped PRs into content", "announce what we shipped", "run the product engine", or as the (planned) 4th nightly lane. Source is the public recoupable org, pulled tokenless (B1 resolved); run it on demand until it's deployed as the 4th nightly lane.
 ---
 
 # Consulting Product Engine (Engine B — product → feature content)
@@ -33,13 +33,14 @@ pull merged PRs since integrations/github/_work/LAST_SYNCED   (python3 integrati
   → JUDGE "shippable to users"       (is it live / flag-on? does it change what a user can DO? tie to release notes/tags)
   → write a cited "what shipped, for users" line per feature   (traces to the PR/commit — never invented)
   → write product-update SIGNALS into signals/   (type: product-update, source.type: pr, locator: commit sha / PR #)
-  → per feature, create an idea bundle and fan the formats:
-       meta.yml     (engine: B — the approval state machine)
-       email.md     (the proven feature-announcement format)
-       linkedin.md + x.md   (build-in-public / demo post)
-       video/       (consulting-hyperframes-video — explainer / demo clip)
-       images/
-  → stage in content/03-drafts/<date>-<feature-slug>/
+  → per feature, create an idea bundle and fan the FULL set (same shape as Engine A):
+       meta.yml     (engine: B — the approval state machine + gates)
+       article.md   (the pillar: the feature story + the portable lesson, blog-length)
+       linkedin.md  (build-in-public / demo post; x.md optional)
+       email.md     (the proven feature-announcement format, deep-link CTA)
+       images/      (consulting-article-illustrator — a hero image1.png to lead the email + article)
+       video/       (optional — consulting-hyperframes-video explainer / demo clip)
+  → gate every text format (reviewer then editor), then stage in content/03-drafts/<date>-<feature-slug>/
   → STOP for Sid approval (never auto-send)
 ```
 
@@ -58,16 +59,21 @@ Most PRs are not announceable. The judgment, in order:
 title/path heuristics vs only release tags.`
 
 ## Per-feature formats (reuse what exists)
+- **`article.md`** — the pillar: the feature story + the portable lesson (blog-length, `consulting-copywriting`
+  social-article style). The post + email derive from it, same as Engine A. (The "agent sends email" sample
+  is a good template: the 38%-empty war story → the fix → the general lesson.)
+- **`linkedin.md`** (+ optional `x.md`) — build-in-public / demo post.
 - **`email.md`** — the **feature-announcement format** (`library/email-templates/email-feature-announcement.md`):
-  subject = the outcome ("It booked a guest in 5 minutes"), open with the pain or the new power, **prove
-  it** (a live test / demo / 2-3 copy-paste prompts), **one deep-link CTA into the product**, founder
-  sign-off. Strip em-dashes/hype per `consulting-copywriting` (the 2025 copy predates the voice rules).
-- **`video/`** — `consulting-hyperframes-video` explainer/demo (or package a provided screen capture).
-- **`linkedin.md` + `x.md`** — build-in-public / demo posts. `images/` as needed.
-- Edit gates — **every audience-facing format, not just the email.** Run `consulting-copy-reviewer`
-  **then** `consulting-copy-editor` on **each** of `email.md` / `linkedin.md` / `x.md`, reviewer before
-  editor. Use the right ICP per format: the **Recoup customer** for `email.md`; **Sid's operator/builder
-  ICP** for `linkedin.md` / `x.md` (they go on Sid's public feed). Record which gates ran in the bundle's
+  subject = the outcome ("It booked a guest in 5 minutes"), open with the new power, **prove it** (a live
+  test / demo / 2-3 copy-paste prompts), **one deep-link CTA into the product**, founder sign-off. Strip
+  em-dashes/hype per `consulting-copywriting`.
+- **`images/`** — `consulting-article-illustrator` (gpt-image-2 via the Higgsfield MCP when unattended):
+  a **hero `image1.png`** the email leads with and the article uses, plus inline figures as the article warrants.
+- **`video/`** — optional: `consulting-hyperframes-video` explainer/demo (or a provided screen capture).
+- Edit gates — **every audience-facing text format.** Run `consulting-copy-reviewer` **then**
+  `consulting-copy-editor` on **each** of `article.md` / `linkedin.md` / `email.md` (+ `x.md` if used),
+  reviewer before editor. Use the right ICP per format: the **Recoup customer** for `email.md`; **Sid's
+  operator/builder ICP** for `article.md` / `linkedin.md` / `x.md`. Record which gates ran in the bundle's
   `gates:` field. (Scored ≠ gated — the automated scorer is the floor; the reader/editor passes are the bar.)
 
 ## Audience & dispatch (reuses the email engine)
@@ -80,11 +86,12 @@ title/path heuristics vs only release tags.`
 ## Output — one idea bundle (same shape as Engine A)
 ```
 content/03-drafts/<YYYY-MM-DD>-<feature-slug>/
-  meta.yml     id · title · date · engine: B · source (the PR/release) · formats[] each status: draft
+  meta.yml     id · title · date · engine: B · source (the PRs) · formats[] each status: draft · gates
+  article.md   the pillar — the feature story + the lesson
+  linkedin.md  build-in-public / demo post (x.md optional)
   email.md     the feature-announcement (deep-link CTA into the product)
-  linkedin.md  build-in-public / demo post
-  video/       explainer or demo clip (optional)
-  images/      image1.png = hero/preview, then image2.png…
+  images/      image1.png = hero (leads the email + article), then image2.png…
+  video/       optional explainer / demo clip
 ```
 
 ## Rails
